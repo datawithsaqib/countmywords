@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>Reading Time Calculator — Free Reading &amp; Speaking Time | CountMyWords</title>
+<meta name="description" content="Free reading time calculator. Estimate how long your text takes to read or speak aloud, from its word count — no sign-up, text stays on your device."/>
+<link rel="canonical" href="https://hayat-khan271.github.io/countmywords/reading-time-calculator/"/>
+<meta property="og:title" content="Reading Time Calculator — Free Reading &amp; Speaking Time | CountMyWords"/>
+<meta property="og:description" content="Estimate reading and speaking time from your word count. Free, no sign-up."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://hayat-khan271.github.io/countmywords/reading-time-calculator/"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="../">Count<span>My</span>Words</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="../word-counter/">Word Counter</a>
+      <a href="../character-counter/">Character Counter</a>
+      <a href="../case-converter/">Case Converter</a>
+      <details>
+        <summary>More Tools</summary>
+        <div class="menu">
+          <a href="../sentence-counter/">Sentence Counter</a>
+          <a href="../reading-time-calculator/" aria-current="page">Reading Time Calculator</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+<main data-tool="reading">
+  <header class="hero">
+    <h1>Reading Time Calculator</h1>
+    <p class="lede">Estimate how long your text takes to read or to speak aloud. Paste your text and the estimates update live.</p>
+  </header>
+  <section aria-label="Reading time calculator tool" style="margin-top:20px">
+    <div class="card">
+      <label class="sr" for="mainText">Your text</label>
+      <textarea id="mainText" placeholder="Paste or type your text here…"></textarea>
+      <div class="stats">
+        <div class="stat"><b id="stWords">0</b><span>Total words</span></div>
+        <div class="stat"><b id="stRead">0 min</b><span>Reading time</span></div>
+        <div class="stat"><b id="stSpeak">0 min</b><span>Speaking time</span></div>
+        <div class="stat"><b id="stSent">0</b><span>Sentences</span></div>
+      </div>
+      <p class="small" id="stReadDetail">Enter text to see an estimate.</p>
+      <p class="small" id="stSpeakDetail"></p>
+      <div class="btnrow">
+        <button class="btn primary" id="btnCopy" type="button">Copy text</button>
+        <button class="btn" id="btnClear" type="button">Clear</button>
+        <span class="small" id="copyMsg" role="status"></span>
+      </div>
+      <div class="privacy-note">
+        <span aria-hidden="true">🔒</span>
+        <span><strong>Private by design:</strong> all counting happens on your device, in this page. Your text is never uploaded, saved, or sent to a server.</span>
+      </div>
+    </div>
+  </section>
+  <section aria-label="How the estimates work">
+    <h2>How the estimates work</h2>
+    <p>These are <strong>estimates, not exact predictions</strong>. Reading time is based on about 200 words per minute, and speaking time on about 130 words per minute, which is a normal speaking speed. Real times vary with the text, the topic and the reader — for example, a 1,000-word article takes about 5 minutes to read and about 7–8 minutes to speak aloud.</p>
+  </section>
+  <section aria-label="Related tools">
+    <h2>Related tools</h2>
+    <div class="tool-links">
+      <a href="../word-counter/">Word Counter</a>
+      <a href="../character-counter/">Character Counter</a>
+      <a href="../sentence-counter/">Sentence Counter</a>
+      <a href="../case-converter/">Case Converter</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <nav aria-label="Footer">
+    <a href="../about/">About</a>
+    <a href="../contact/">Contact</a>
+    <a href="../privacy/">Privacy Policy</a>
+    <a href="../terms/">Terms of Use</a>
+  </nav>
+  <p class="small">CountMyWords — free text tools that run in your browser.</p>
+</footer>
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>Character Counter — Free Online Character Counter | CountMyWords</title>
+<meta name="description" content="Free character counter. Count characters with and without spaces — emoji count as one visible character. Also shows words, sentences and paragraphs."/>
+<link rel="canonical" href="https://hayat-khan271.github.io/countmywords/character-counter/"/>
+<meta property="og:title" content="Character Counter — Free Online Character Counter | CountMyWords"/>
+<meta property="og:description" content="Count characters with and without spaces. Emoji count as one visible character. Free, no sign-up."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://hayat-khan271.github.io/countmywords/character-counter/"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="../">Count<span>My</span>Words</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="../word-counter/">Word Counter</a>
+      <a href="../character-counter/" aria-current="page">Character Counter</a>
+      <a href="../case-converter/">Case Converter</a>
+      <details>
+        <summary>More Tools</summary>
+        <div class="menu">
+          <a href="../sentence-counter/">Sentence Counter</a>
+          <a href="../reading-time-calculator/">Reading Time Calculator</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+<main data-tool="characters">
+  <header class="hero">
+    <h1>Character Counter</h1>
+    <p class="lede">Count characters with and without spaces. Useful for social posts, meta descriptions, headlines and forms with a character limit.</p>
+  </header>
+  <section aria-label="Character counter tool" style="margin-top:20px">
+    <div class="card">
+      <label class="sr" for="mainText">Your text</label>
+      <textarea id="mainText" placeholder="Paste or type your text here…"></textarea>
+      <div class="stats">
+        <div class="stat"><b id="stChars">0</b><span>Characters</span></div>
+        <div class="stat"><b id="stCharsNo">0</b><span>Chars, no spaces</span></div>
+        <div class="stat"><b id="stWords">0</b><span>Words</span></div>
+        <div class="stat"><b id="stSent">0</b><span>Sentences</span></div>
+        <div class="stat"><b id="stPara">0</b><span>Paragraphs</span></div>
+      </div>
+      <div class="btnrow">
+        <button class="btn primary" id="btnCopy" type="button">Copy text</button>
+        <button class="btn" id="btnClear" type="button">Clear</button>
+        <span class="small" id="copyMsg" role="status"></span>
+      </div>
+      <div class="privacy-note">
+        <span aria-hidden="true">🔒</span>
+        <span><strong>Private by design:</strong> all counting happens on your device, in this page. Your text is never uploaded, saved, or sent to a server.</span>
+      </div>
+    </div>
+  </section>
+  <section aria-label="How characters are counted">
+    <h2>How characters are counted</h2>
+    <p>Characters are counted as visible characters. An emoji such as 😀 counts as one character, not two, and combined characters and flags are counted the same way. &ldquo;Characters&rdquo; includes spaces, line breaks and punctuation. &ldquo;Chars, no spaces&rdquo; counts the same text with all spaces removed.</p>
+    <p>For example, &ldquo;Hello 😀&rdquo; is 7 characters including the space and 6 characters without it.</p>
+  </section>
+  <section aria-label="Related tools">
+    <h2>Related tools</h2>
+    <div class="tool-links">
+      <a href="../word-counter/">Word Counter</a>
+      <a href="../sentence-counter/">Sentence Counter</a>
+      <a href="../case-converter/">Case Converter</a>
+      <a href="../reading-time-calculator/">Reading Time Calculator</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <nav aria-label="Footer">
+    <a href="../about/">About</a>
+    <a href="../contact/">Contact</a>
+    <a href="../privacy/">Privacy Policy</a>
+    <a href="../terms/">Terms of Use</a>
+  </nav>
+  <p class="small">CountMyWords — free text tools that run in your browser.</p>
+</footer>
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

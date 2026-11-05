@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>Word Counter — Free Online Word Counter | CountMyWords</title>
+<meta name="description" content="Free word counter. Count words, characters, sentences and paragraphs in essays, articles and assignments as you type — no sign-up, text stays on your device."/>
+<link rel="canonical" href="https://hayat-khan271.github.io/countmywords/word-counter/"/>
+<meta property="og:title" content="Word Counter — Free Online Word Counter | CountMyWords"/>
+<meta property="og:description" content="Count words, characters, sentences and paragraphs as you type. Free, no sign-up."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://hayat-khan271.github.io/countmywords/word-counter/"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="../">Count<span>My</span>Words</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="../word-counter/" aria-current="page">Word Counter</a>
+      <a href="../character-counter/">Character Counter</a>
+      <a href="../case-converter/">Case Converter</a>
+      <details>
+        <summary>More Tools</summary>
+        <div class="menu">
+          <a href="../sentence-counter/">Sentence Counter</a>
+          <a href="../reading-time-calculator/">Reading Time Calculator</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+<main data-tool="word">
+  <header class="hero">
+    <h1>Word Counter</h1>
+    <p class="lede">Count the words in your text as you type. Useful for essays, articles, assignments and posts with a word limit.</p>
+  </header>
+  <section aria-label="Word counter tool" style="margin-top:20px">
+    <div class="card">
+      <label class="sr" for="mainText">Your text</label>
+      <textarea id="mainText" placeholder="Paste or type your text here…"></textarea>
+      <div class="stats">
+        <div class="stat"><b id="stWords">0</b><span>Words</span></div>
+        <div class="stat"><b id="stChars">0</b><span>Characters</span></div>
+        <div class="stat"><b id="stCharsNo">0</b><span>Chars, no spaces</span></div>
+        <div class="stat"><b id="stSent">0</b><span>Sentences</span></div>
+        <div class="stat"><b id="stPara">0</b><span>Paragraphs</span></div>
+        <div class="stat"><b id="stRead">0 min</b><span>Reading time</span></div>
+      </div>
+      <div class="btnrow">
+        <button class="btn primary" id="btnCopy" type="button">Copy text</button>
+        <button class="btn" id="btnSample" type="button">Load sample text</button>
+        <button class="btn" id="btnClear" type="button">Clear</button>
+        <span class="small" id="copyMsg" role="status"></span>
+      </div>
+      <div class="privacy-note">
+        <span aria-hidden="true">🔒</span>
+        <span><strong>Private by design:</strong> all counting happens on your device, in this page. Your text is never uploaded, saved, or sent to a server.</span>
+      </div>
+    </div>
+  </section>
+  <section aria-label="How the word counter works">
+    <h2>How words are counted</h2>
+    <p>Words are groups of letters and numbers. A word with an apostrophe, such as <em>don&rsquo;t</em>, counts as one word, and a hyphenated word, such as <em>well-known</em>, also counts as one word. Numbers count as words, and text in other languages counts too. Extra spaces, line breaks and blank lines do not create extra words.</p>
+    <p>For example, &ldquo;Hello world!&rdquo; is 2 words, 12 characters including the space, and 1 sentence.</p>
+  </section>
+  <section aria-label="Related tools">
+    <h2>Related tools</h2>
+    <div class="tool-links">
+      <a href="../character-counter/">Character Counter</a>
+      <a href="../sentence-counter/">Sentence Counter</a>
+      <a href="../case-converter/">Case Converter</a>
+      <a href="../reading-time-calculator/">Reading Time Calculator</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <nav aria-label="Footer">
+    <a href="../about/">About</a>
+    <a href="../contact/">Contact</a>
+    <a href="../privacy/">Privacy Policy</a>
+    <a href="../terms/">Terms of Use</a>
+  </nav>
+  <p class="small">CountMyWords — free text tools that run in your browser.</p>
+</footer>
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

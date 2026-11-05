@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<meta name="color-scheme" content="light dark"/>
+<link rel="icon" href="data:,"/>
+<title>Case Converter — Free Online Case Converter | CountMyWords</title>
+<meta name="description" content="Free case converter. Change text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case or kebab-case in one click."/>
+<link rel="canonical" href="https://hayat-khan271.github.io/countmywords/case-converter/"/>
+<meta property="og:title" content="Case Converter — Free Online Case Converter | CountMyWords"/>
+<meta property="og:description" content="Convert text to UPPERCASE, lowercase, Title Case, Sentence case, camelCase, PascalCase, snake_case or kebab-case. Free, no sign-up."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://hayat-khan271.github.io/countmywords/case-converter/"/>
+<link rel="stylesheet" href="../assets/style.css"/>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="../">Count<span>My</span>Words</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="../word-counter/">Word Counter</a>
+      <a href="../character-counter/">Character Counter</a>
+      <a href="../case-converter/" aria-current="page">Case Converter</a>
+      <details>
+        <summary>More Tools</summary>
+        <div class="menu">
+          <a href="../sentence-counter/">Sentence Counter</a>
+          <a href="../reading-time-calculator/">Reading Time Calculator</a>
+        </div>
+      </details>
+    </nav>
+  </div>
+</header>
+<div class="wrap">
+<main data-tool="case">
+  <header class="hero">
+    <h1>Case Converter</h1>
+    <p class="lede">Change the case of your text in one click. Paste your text, choose a style below, and copy the result.</p>
+  </header>
+  <section aria-label="Case converter tool" style="margin-top:20px">
+    <div class="card">
+      <label class="sr" for="mainText">Your text</label>
+      <textarea id="mainText" placeholder="Paste or type your text here…"></textarea>
+      <h2 style="margin-top:16px">Choose a case style</h2>
+      <div class="casegrid">
+        <button class="btn" type="button" data-case="upper">UPPERCASE</button>
+        <button class="btn" type="button" data-case="lower">lowercase</button>
+        <button class="btn" type="button" data-case="title">Title Case</button>
+        <button class="btn" type="button" data-case="sentence">Sentence case</button>
+        <button class="btn" type="button" data-case="camel">camelCase</button>
+        <button class="btn" type="button" data-case="pascal">PascalCase</button>
+        <button class="btn" type="button" data-case="snake">snake_case</button>
+        <button class="btn" type="button" data-case="kebab">kebab-case</button>
+      </div>
+      <div class="stats">
+        <div class="stat"><b id="stWords">0</b><span>Words</span></div>
+        <div class="stat"><b id="stChars">0</b><span>Characters</span></div>
+      </div>
+      <div class="btnrow">
+        <button class="btn primary" id="btnCopy" type="button">Copy text</button>
+        <button class="btn" id="btnClear" type="button">Clear</button>
+        <span class="small" id="copyMsg" role="status"></span>
+      </div>
+      <div class="privacy-note">
+        <span aria-hidden="true">🔒</span>
+        <span><strong>Private by design:</strong> all conversion happens on your device, in this page. Your text is never uploaded, saved, or sent to a server.</span>
+      </div>
+    </div>
+  </section>
+  <section aria-label="About the case styles">
+    <h2>What each style does</h2>
+    <ul class="plain">
+      <li><strong>UPPERCASE</strong> — every letter becomes a capital letter.</li>
+      <li><strong>lowercase</strong> — every letter becomes a small letter.</li>
+      <li><strong>Title Case</strong> — the first letter of each word becomes a capital.</li>
+      <li><strong>Sentence case</strong> — the first letter of each sentence becomes a capital, and the rest become small letters.</li>
+      <li><strong>camelCase</strong> — words are joined with no spaces, and each word after the first starts with a capital: <em>helloWorld</em>.</li>
+      <li><strong>PascalCase</strong> — like camelCase, but the first word also starts with a capital: <em>HelloWorld</em>.</li>
+      <li><strong>snake_case</strong> — words are joined with underscores: <em>hello_world</em>.</li>
+      <li><strong>kebab-case</strong> — words are joined with hyphens: <em>hello-world</em>.</li>
+    </ul>
+    <p>Conversion keeps your punctuation and spacing where the style allows it. For camelCase, PascalCase, snake_case and kebab-case, spaces and punctuation are replaced by the style&rsquo;s joining rule, because that is what those styles mean.</p>
+  </section>
+  <section aria-label="Related tools">
+    <h2>Related tools</h2>
+    <div class="tool-links">
+      <a href="../word-counter/">Word Counter</a>
+      <a href="../character-counter/">Character Counter</a>
+      <a href="../sentence-counter/">Sentence Counter</a>
+      <a href="../reading-time-calculator/">Reading Time Calculator</a>
+    </div>
+  </section>
+</main>
+<footer class="site-footer">
+  <nav aria-label="Footer">
+    <a href="../about/">About</a>
+    <a href="../contact/">Contact</a>
+    <a href="../privacy/">Privacy Policy</a>
+    <a href="../terms/">Terms of Use</a>
+  </nav>
+  <p class="small">CountMyWords — free text tools that run in your browser.</p>
+</footer>
+</div>
+<script src="../assets/app.js"></script>
+</body>
+</html>

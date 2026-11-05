@@ -5,482 +5,122 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
 <meta name="color-scheme" content="light dark"/>
 <link rel="icon" href="data:,"/>
-<title>Text Tools Hub — Free Word Counter, Character Counter &amp; Case Converter</title>
-<meta name="description" content="Free text tools that work in your browser: word counter, character counter, case converter, sentence counter and reading-time calculator. Your text never leaves your device."/>
-<style>
-:root{
-  --bg:#f7f5f0; --surface:#ffffff; --surface2:#efece4; --ink:#1c2420; --muted:#5c665f;
-  --line:#ddd8cb; --accent:#0f766e; --accent-ink:#ffffff; --accent-soft:#e0f2ef;
-  --warn-bg:#fdf3e3; --warn-line:#e8c88a; --warn-ink:#6b4e12;
-  --good:#177245; --bad:#b3352c; --chip:#eef3f1;
-  --radius:14px;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#121613; --surface:#1a201c; --surface2:#222a25; --ink:#e8ece9; --muted:#a3ada6;
-    --line:#333d36; --accent:#2dd4bf; --accent-ink:#06231f; --accent-soft:#123a36;
-    --warn-bg:#2b2110; --warn-line:#6e5620; --warn-ink:#e8c88a;
-    --good:#4ade80; --bad:#f87171; --chip:#232b27;
-  }
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.55;font-size:16px}
-.wrap{max-width:1060px;margin:0 auto;padding:0 18px 64px}
-h1{font-size:clamp(28px,5vw,40px);line-height:1.15;margin:0 0 10px;letter-spacing:-.02em}
-h2{font-size:clamp(21px,3.4vw,27px);margin:0 0 8px;letter-spacing:-.01em}
-h3{font-size:17px;margin:0 0 6px}
-p{margin:0 0 12px}
-.small{font-size:13.5px;color:var(--muted)}
-a{color:var(--accent)}
-header.hero{padding:34px 0 8px}
-.lede{font-size:17.5px;color:var(--muted);max-width:680px}
-.verdict-banner{margin:20px 0 0;background:var(--accent-soft);border:1px solid var(--accent);border-radius:var(--radius);padding:16px 18px}
-.verdict-banner strong{font-size:17px}
-nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 4px}
-nav.toc a{background:var(--chip);color:var(--ink);text-decoration:none;padding:7px 13px;border-radius:999px;font-size:14px;font-weight:600;border:1px solid var(--line)}
-section{margin-top:44px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
-/* ---- Tools ---- */
-.tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.tab{appearance:none;border:1px solid var(--line);background:var(--surface2);color:var(--ink);padding:9px 15px;border-radius:999px;font-size:14.5px;font-weight:700;cursor:pointer}
-.tab[aria-selected="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-textarea{width:100%;min-height:190px;resize:vertical;border:1px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);padding:14px;font-size:16px;line-height:1.6;font-family:inherit}
-textarea:focus{outline:2px solid var(--accent);outline-offset:1px}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:14px 0}
-@media(max-width:640px){.stats{grid-template-columns:repeat(2,1fr)}}
-.stat{background:var(--surface2);border-radius:10px;padding:12px 14px;text-align:center}
-.stat b{display:block;font-size:24px;line-height:1.1}
-.stat span{font-size:12.5px;color:var(--muted);text-transform:uppercase;letter-spacing:.04em}
-.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
-.btn{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink);padding:9px 14px;border-radius:9px;font-size:14px;font-weight:600;cursor:pointer}
-.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
-.btn:active{transform:translateY(1px)}
-.privacy-note{display:flex;gap:8px;align-items:flex-start;background:var(--accent-soft);border-radius:10px;padding:10px 14px;font-size:14px;margin-top:14px}
-.casegrid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-@media(max-width:640px){.casegrid{grid-template-columns:repeat(2,1fr)}}
-/* ---- Tables ---- */
-.tablewrap{overflow-x:auto}
-table{width:100%;border-collapse:collapse;font-size:14.5px}
-th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
-th{font-size:12.5px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
-td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-tr.win td{background:var(--accent-soft);font-weight:600}
-.badge{display:inline-block;padding:2px 9px;border-radius:999px;font-size:12px;font-weight:700}
-.badge.go{background:var(--accent);color:var(--accent-ink)}
-.badge.hold{background:var(--warn-bg);color:var(--warn-ink);border:1px solid var(--warn-line)}
-.badge.no{background:transparent;color:var(--bad);border:1px solid var(--bad)}
-/* ---- Lists / plan ---- */
-.checklist{list-style:none;margin:0;padding:0}
-.checklist li{padding:9px 0 9px 30px;position:relative;border-bottom:1px solid var(--line)}
-.checklist li:last-child{border-bottom:none}
-.checklist li::before{content:"";position:absolute;left:2px;top:13px;width:15px;height:15px;border:2px solid var(--accent);border-radius:4px}
-ul.plain{margin:0;padding-left:20px}
-ul.plain li{margin-bottom:7px}
-.phase{border-left:4px solid var(--accent);padding:4px 0 4px 16px;margin-bottom:20px}
-.phase .when{font-size:12.5px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
-.warnbox{background:var(--warn-bg);border:1px solid var(--warn-line);color:var(--warn-ink);border-radius:var(--radius);padding:16px 18px}
-.warnbox p:last-child{margin-bottom:0}
-input[type=range]{width:100%;accent-color:var(--accent)}
-.est-out{font-size:30px;font-weight:800;letter-spacing:-.02em}
-select,input[type=text]{border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 10px;font-size:15px;font-family:inherit}
-.namecard{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
-.namecard .domain{font-size:19px;font-weight:800;letter-spacing:-.01em}
-.namecard .pick{font-size:12px;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.05em}
-footer{margin-top:52px;border-top:1px solid var(--line);padding-top:18px}
-footer li{margin-bottom:5px;font-size:13.5px}
-.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
-</style>
+<title>Free Online Word Counter — CountMyWords</title>
+<meta name="description" content="Free online word counter. Count words, characters, sentences and paragraphs as you type, and check reading time. Your text never leaves your device."/>
+<link rel="canonical" href="https://hayat-khan271.github.io/countmywords/"/>
+<meta property="og:title" content="Free Online Word Counter — CountMyWords"/>
+<meta property="og:description" content="Count words, characters, sentences and paragraphs instantly, in your browser. Free, no sign-up."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://hayat-khan271.github.io/countmywords/"/>
+<link rel="stylesheet" href="assets/style.css"/>
 </head>
 <body>
-<div class="wrap">
-
-<header class="hero">
-  <h1>Text Tools Hub</h1>
-  <p class="lede">Free text tools that run in your browser — word counter, character counter, case converter, sentence counter and reading-time calculator. Paste your text below and the numbers update live.</p>
-  <div class="verdict-banner">
-    <strong>The final decision, in one line:</strong> build this text &amp; writing tools site first. Host it free on <strong>GitHub Pages</strong> (or Cloudflare Pages / Netlify) — <strong>not BotKeep</strong>. Full reasons, name ideas, earnings maths and the 30-day plan are all on this page.
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="./">Count<span>My</span>Words</a>
+    <nav class="main-nav" aria-label="Main navigation">
+      <a href="word-counter/" aria-current="page">Word Counter</a>
+      <a href="character-counter/">Character Counter</a>
+      <a href="case-converter/">Case Converter</a>
+      <details>
+        <summary>More Tools</summary>
+        <div class="menu">
+          <a href="sentence-counter/">Sentence Counter</a>
+          <a href="reading-time-calculator/">Reading Time Calculator</a>
+        </div>
+      </details>
+    </nav>
   </div>
-  <nav class="toc" aria-label="On this page">
-    <a href="#tools">Use the tools</a>
-    <a href="#hosting">BotKeep or GitHub?</a>
-    <a href="#names">Website names</a>
-    <a href="#why">Why text tools won</a>
-    <a href="#money">Earnings maths</a>
-    <a href="#test">Week-1 test</a>
-    <a href="#plan">30-day plan</a>
-  </nav>
 </header>
+<div class="wrap">
+<main data-tool="word">
+  <header class="hero">
+    <h1>Free Online Word Counter</h1>
+    <p class="lede">Count words, characters, sentences and paragraphs as you type. Paste your text below and the numbers update live — no sign-up, no upload.</p>
+  </header>
 
-<!-- ================= TOOLS ================= -->
-<section id="tools">
-  <h2>The tools — working now</h2>
-  <p class="small">This page is the first version of the site itself. Every tool below works. Nothing you type is sent anywhere.</p>
-  <div class="card">
-    <div class="tabs" role="tablist" aria-label="Choose a tool">
-      <button class="tab" role="tab" aria-selected="true" data-tool="counter">Word Counter</button>
-      <button class="tab" role="tab" aria-selected="false" data-tool="chars">Character Counter</button>
-      <button class="tab" role="tab" aria-selected="false" data-tool="case">Case Converter</button>
-      <button class="tab" role="tab" aria-selected="false" data-tool="read">Reading Time</button>
-    </div>
-
-    <label class="sr" for="mainText">Your text</label>
-    <textarea id="mainText" placeholder="Paste or type your text here…"></textarea>
-
-    <div class="stats" id="statsRow">
-      <div class="stat"><b id="stWords">0</b><span>Words</span></div>
-      <div class="stat"><b id="stChars">0</b><span>Characters</span></div>
-      <div class="stat"><b id="stCharsNo">0</b><span>Chars, no spaces</span></div>
-      <div class="stat"><b id="stSent">0</b><span>Sentences</span></div>
-      <div class="stat"><b id="stPara">0</b><span>Paragraphs</span></div>
-      <div class="stat"><b id="stRead">0 min</b><span>Reading time</span></div>
-      <div class="stat"><b id="stSpeak">0 min</b><span>Speaking time</span></div>
-      <div class="stat"><b id="stLong">—</b><span>Longest word</span></div>
-    </div>
-
-    <div id="panel-case" hidden>
-      <h3>Convert the case of your text</h3>
-      <div class="casegrid">
-        <button class="btn" data-case="upper">UPPERCASE</button>
-        <button class="btn" data-case="lower">lowercase</button>
-        <button class="btn" data-case="title">Title Case</button>
-        <button class="btn" data-case="sentence">Sentence case</button>
-        <button class="btn" data-case="camel">camelCase</button>
-        <button class="btn" data-case="snake">snake_case</button>
-        <button class="btn" data-case="kebab">kebab-case</button>
-        <button class="btn" data-case="alt">aLtErNaTiNg</button>
-        <button class="btn" data-case="invert">iNVERT cASE</button>
+  <section aria-label="Word counter tool" style="margin-top:20px">
+    <div class="card">
+      <label class="sr" for="mainText">Your text</label>
+      <textarea id="mainText" placeholder="Paste or type your text here…"></textarea>
+      <div class="stats">
+        <div class="stat"><b id="stWords">0</b><span>Words</span></div>
+        <div class="stat"><b id="stChars">0</b><span>Characters</span></div>
+        <div class="stat"><b id="stCharsNo">0</b><span>Chars, no spaces</span></div>
+        <div class="stat"><b id="stSent">0</b><span>Sentences</span></div>
+        <div class="stat"><b id="stPara">0</b><span>Paragraphs</span></div>
+        <div class="stat"><b id="stRead">0 min</b><span>Reading time</span></div>
+      </div>
+      <div class="btnrow">
+        <button class="btn primary" id="btnCopy" type="button">Copy text</button>
+        <button class="btn" id="btnSample" type="button">Load sample text</button>
+        <button class="btn" id="btnClear" type="button">Clear</button>
+        <span class="small" id="copyMsg" role="status"></span>
+      </div>
+      <div class="privacy-note">
+        <span aria-hidden="true">🔒</span>
+        <span><strong>Private by design:</strong> all counting happens on your device, in this page. Your text is never uploaded, saved, or sent to a server.</span>
       </div>
     </div>
+  </section>
 
-    <div id="panel-read" hidden>
-      <h3>Reading &amp; speaking time</h3>
-      <p style="margin-bottom:6px">Reading time uses about <strong>200 words per minute</strong>. Speaking time uses about <strong>130 words per minute</strong> — a normal speaking speed. Both update live in the stats above as you type.</p>
-      <p class="small" style="margin:0">Useful checks: a 1,000-word article ≈ 5 minutes to read, ≈ 7–8 minutes to speak aloud.</p>
+  <section aria-label="Other tools">
+    <h2>More free text tools</h2>
+    <div class="tool-links">
+      <a href="character-counter/">Character Counter</a>
+      <a href="case-converter/">Case Converter</a>
+      <a href="sentence-counter/">Sentence Counter</a>
+      <a href="reading-time-calculator/">Reading Time Calculator</a>
     </div>
+    <div class="grid3" style="margin-top:16px">
+      <div class="card">
+        <h3>Character Counter</h3>
+        <p class="small" style="margin:0">Counts characters with and without spaces. Useful for social posts, meta descriptions and forms with a character limit.</p>
+      </div>
+      <div class="card">
+        <h3>Case Converter</h3>
+        <p class="small" style="margin:0">Fixes text typed in the wrong case in one click — UPPERCASE, Title Case, camelCase, snake_case and more.</p>
+      </div>
+      <div class="card">
+        <h3>Reading Time Calculator</h3>
+        <p class="small" style="margin:0">Estimates how long your text takes to read or to speak aloud, based on its word count.</p>
+      </div>
+    </div>
+  </section>
 
-    <div class="btnrow">
-      <button class="btn primary" id="btnCopy">Copy text</button>
-      <button class="btn" id="btnSample">Load sample text</button>
-      <button class="btn" id="btnClear">Clear</button>
-      <span class="small" id="copyMsg" role="status"></span>
-    </div>
+  <section aria-label="About CountMyWords">
+    <h2>What is CountMyWords?</h2>
+    <p>CountMyWords is a free set of small text tools for students, writers, teachers and anyone who works with words. The word counter checks the length of essays, articles, assignments and posts. The character counter checks limits for social media and search descriptions. The case converter fixes text typed in the wrong case, and the reading time calculator gives a quick estimate of how long a text takes to read.</p>
+    <p>Every tool runs in your browser. There is no account to create and nothing to install. Paste your text, read the numbers, and copy the result when you are done.</p>
+    <h3>How words are counted</h3>
+    <p>Words are groups of letters and numbers. A word with an apostrophe, such as <em>don&rsquo;t</em>, counts as one word, and a hyphenated word, such as <em>well-known</em>, also counts as one word. Numbers count as words, and extra spaces or blank lines do not create extra words.</p>
+  </section>
 
-    <div class="privacy-note">
-      <span aria-hidden="true">🔒</span>
-      <span><strong>Private by design:</strong> all counting happens on your device, in this page. Your text is never uploaded, saved, or sent to a server.</span>
-    </div>
-  </div>
+  <section class="faq" aria-label="Frequently asked questions">
+    <h2>Frequently asked questions</h2>
+    <h3>Is CountMyWords free?</h3>
+    <p>Yes. All the tools on this site are free to use, with no account and no sign-up.</p>
+    <h3>Does my text leave my device?</h3>
+    <p>No. The counting happens in your browser, on your own device. Your text is not uploaded to a server, saved, or shared with anyone.</p>
+    <h3>How are words counted?</h3>
+    <p>Words are groups of letters and numbers. Contractions such as <em>don&rsquo;t</em> and hyphenated words such as <em>well-known</em> count as one word each. Numbers count as words. Multiple spaces and blank lines do not add words.</p>
+    <h3>How are characters counted?</h3>
+    <p>Characters are counted as visible characters. An emoji such as 😀 counts as one character, not two, so &ldquo;Hello 😀&rdquo; is 7 characters including the space and 6 without it. You can see both counts — with spaces and without spaces — on the <a href="character-counter/">Character Counter</a> page.</p>
+    <h3>What is the reading time based on?</h3>
+    <p>Reading time is an estimate based on about 200 words per minute, and speaking time on about 130 words per minute. Real times vary with the text and the reader, so treat the numbers as a guide, not an exact prediction.</p>
+  </section>
+</main>
 
-  <div class="grid3" style="margin-top:16px">
-    <div class="card">
-      <h3>Word Counter</h3>
-      <p class="small" style="margin:0">Counts words, sentences and paragraphs as you type. Good for essays, articles and assignments with a word limit.</p>
-    </div>
-    <div class="card">
-      <h3>Character Counter</h3>
-      <p class="small" style="margin:0">Counts characters with and without spaces. Good for social posts, meta descriptions and forms with a character limit.</p>
-    </div>
-    <div class="card">
-      <h3>Case Converter</h3>
-      <p class="small" style="margin:0">Fixes text typed in the wrong case in one click — UPPERCASE, Title Case, camelCase, snake_case and more.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= HOSTING ================= -->
-<section id="hosting">
-  <h2>BotKeep or free GitHub? — the verdict</h2>
-  <p><strong>Use GitHub Pages (free). BotKeep is not the better choice for this site.</strong> Here is the simple reason: this site is just HTML, CSS and JavaScript files. It needs <em>no server at all</em>. BotKeep rents you a small server for bots and apps — power this site never uses — and it is still in beta with no uptime promise. GitHub Pages, Cloudflare Pages and Netlify are built exactly for static sites like this one: free, fast, and reliable.</p>
-  <div class="card tablewrap">
-    <table>
-      <thead><tr><th>Question</th><th>BotKeep</th><th>GitHub Pages / Cloudflare / Netlify</th></tr></thead>
-      <tbody>
-        <tr><td>Cost to start</td><td>Free plan: 1 server, 512 MB RAM, 1 GB storage, no card needed</td><td>Free for static sites, no card needed</td></tr>
-        <tr><td>Is it safe?</td><td>Safe enough to <em>test</em> on. But it is in beta, with no uptime guarantee — if it goes down, your site goes down</td><td>Run by GitHub (Microsoft), Cloudflare and Netlify — large, established, built for public websites</td></tr>
-        <tr><td>Right tool for this site?</td><td>Made for bots and apps that need a running server. This site needs no server — wasted power, extra things that can break</td><td>Made exactly for static HTML/CSS/JS sites like this one</td></tr>
-        <tr><td>Free address you get</td><td>A free BotKeep address for testing</td><td><code>yourname.github.io</code> · <code>yourname.pages.dev</code> · <code>yourname.netlify.app</code> — free for as long as the service exists</td></tr>
-        <tr><td>Custom domain later</td><td>Supported in its Domains section</td><td>Supported — connect your own .com when you buy one</td></tr>
-        <tr class="win"><td><strong>Verdict</strong></td><td>Keep your account as a backup / for future bot or app ideas. Do not host this site there.</td><td><strong>Winner.</strong> Host this site here. Any of the three is fine — GitHub Pages is the simplest if you already use GitHub; Cloudflare Pages is the fastest.</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <p class="small" style="margin-top:10px">One rule stays the same on every host: there is no permanent free <code>.com</code>. A domain costs about $10–15 a year (price not verified in the research — check the registrar when you buy). Buy it <strong>only after</strong> the week-1 test below passes. Until then, the free address is enough.</p>
-</section>
-
-<!-- ================= NAMES ================= -->
-<section id="names">
-  <h2>Recommended website names</h2>
-  <p>Short, clear names that say what the site does — that helps both people and Google. These are recommendations to check, <strong>not</strong> confirmed-available domains: always check the exact name on a registrar (Porkbun or Cloudflare) before you rely on it, and prefer the <code>.com</code>.</p>
-  <div class="grid2">
-    <div class="namecard">
-      <div class="pick">Top pick</div>
-      <div class="domain">TextCountLab</div>
-      <p class="small" style="margin:0">Says "text" + "count" in the name. Short, easy to spell, works for every future text tool — not only counting.</p>
-    </div>
-    <div class="namecard">
-      <div class="pick">Top pick</div>
-      <div class="domain">WordToolNest</div>
-      <p class="small" style="margin:0">"Nest" = one home for many small word tools. Friendly, and it does not lock you into one tool.</p>
-    </div>
-    <div class="namecard">
-      <div class="domain">QuickTextTools</div>
-      <p class="small" style="margin:0">Very clear: fast, text, tools. Longer, but a visitor instantly knows what the site is.</p>
-    </div>
-    <div class="namecard">
-      <div class="domain">CountMyWords</div>
-      <p class="small" style="margin:0">Memorable and human — it is exactly what the visitor wants to do. Best if the word counter stays the hero tool.</p>
-    </div>
-    <div class="namecard">
-      <div class="domain">TextFixHub</div>
-      <p class="small" style="margin:0">Short and brandable. "Fix" covers case conversion and cleanup tools you may add later.</p>
-    </div>
-    <div class="namecard">
-      <div class="domain">WordNest Tools</div>
-      <p class="small" style="margin:0">Soft, friendly name for students and writers — the audience most likely to return and bookmark the site.</p>
-    </div>
-  </div>
-  <p class="small" style="margin-top:12px">My advice: test with the free address first (for example <code>textcountlab.github.io</code>). Buy the .com of your favourite name only when the week-1 test says GO.</p>
-</section>
-
-<!-- ================= WHY ================= -->
-<section id="why">
-  <h2>Why text tools won — the final conclusion</h2>
-  <p>The final research compared three finalists head-to-head. Text tools ranked <strong>1st</strong>, image tools <strong>2nd</strong>, and a niche affiliate site <strong>3rd</strong>. Text tools won by elimination — it is the only one that passes the traffic test with <em>small</em> competitors, has the simplest build, and is hardest for AI search answers to replace (an AI can state a word count for a quote, but it cannot count <em>your</em> pasted text).</p>
-
-  <div class="warnbox" style="margin:16px 0">
-    <p><strong>The honest caveat — do not skip this:</strong> no finalist passed every test cleanly. The best small-site evidence implies only about <strong>$0.70 per 1,000 pageviews</strong> for a geographically mixed word-counter site. At that rate, $50–$200 a month needs roughly <strong>70,000–290,000 pageviews a month</strong> (about 45,000–190,000 visits). Realistic time to $50–$200 a month is <strong>9–18 months</strong>; 6–12 months is the optimistic floor. If you need $50–$200 <em>certainly</em> within 6–12 months, none of the three options guarantees it.</p>
-  </div>
-
-  <h3 style="margin-top:20px">Proof: small sites (not giants) already get this traffic</h3>
-  <p class="small">All figures are third-party <em>estimates</em> (HypeStat / Semrush / SimilarWeb, read 5 Nov 2026) — never the sites' own verified analytics. Sources disagree, so ranges are shown.</p>
-  <div class="card tablewrap">
-    <table>
-      <thead><tr><th>Small competitor</th><th class="num">Estimated visits / month</th><th>Why it matters</th></tr></thead>
-      <tbody>
-        <tr><td>wordcount.com</td><td class="num">~195,000</td><td>Estimated ~$211/month (HypeStat's crude estimator) — low hundreds, not thousands</td></tr>
-        <tr><td>wordcounter.io</td><td class="num">278,000 – 499,000</td><td>Sources disagree sharply — treat as a range, not a fact</td></tr>
-        <tr><td>word-counter.com</td><td class="num">83,000 – 356,000</td><td>Largest disagreement in the set; "tens to low-hundreds of thousands, volatile"</td></tr>
-        <tr><td>easywordcount.com</td><td class="num">~22,000 and growing</td><td>Best "small and growing" proof: 4,760 → 11,580 → 22,160 visits in 3 months (Semrush, Sep 2026)</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="grid2" style="margin-top:16px">
-    <div class="card">
-      <h3>Why image tools lost (2nd)</h3>
-      <ul class="plain">
-        <li>Traffic exists, but the biggest small example (compressor.io, ~180,000–295,000 visits) is <strong>82–85% direct/brand traffic</strong> — built over years, not winnable from Google by a new site.</li>
-        <li>Advertisers pay almost nothing: CPC of <strong>$0.01–$0.05</strong> on core terms; implied ~$0.38 per 1,000 pageviews, so $50–$200 needs ~132,000–526,000 pageviews.</li>
-        <li>Hardest code: browser image codecs, EXIF rotation, AVIF/HEIC gaps, mobile memory crashes.</li>
-        <li>A $5 premium needs accounts and card payments — a second product, against the $0-start rule.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3>Why the affiliate site lost (3rd)</h3>
-      <ul class="plain">
-        <li><strong>Failed the traffic test outright:</strong> no small affiliate competitor with published traffic was found at all.</li>
-        <li>Its sources assume <strong>80–100 articles</strong>, not 10–20 reviews — too much work at 1 hour a day.</li>
-        <li>Highest wipe-out risk: in one study, <strong>27% of 7,105 niche sites lost 91%+ of traffic</strong> in a Google update period; the named case, HouseFresh, fell 91% and took ~2 years to recover.</li>
-        <li>Amazon closes a new affiliate account that makes no 3 qualifying sales in 180 days.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- ================= MONEY ================= -->
-<section id="money">
-  <h2>Earnings maths — try it yourself</h2>
-  <p>Income = pageviews × RPM ÷ 1,000. Move the slider and see what this site must reach for your $50–$200 goal. The three RPM choices are the real ones from the research — not promises.</p>
-  <div class="card">
-    <label for="pvRange"><strong>Monthly pageviews:</strong> <span id="pvLabel">72,000</span></label>
-    <input type="range" id="pvRange" min="1000" max="300000" step="1000" value="72000"/>
-    <div style="margin:14px 0">
-      <label for="rpmSel"><strong>Ad rate (RPM):</strong></label><br/>
-      <select id="rpmSel">
-        <option value="0.69">$0.69 — implied by a real small word-counter site (mixed countries)</option>
-        <option value="2.34" selected>$2.34 — AdSense average in a 2025 survey of 187 bloggers</option>
-        <option value="11.15">$11.15 — Journey by Mediavine average (needs mostly US/UK/CA/AU traffic)</option>
-      </select>
-    </div>
-    <div class="est-out" id="estOut">≈ $168 / month</div>
-    <p class="small" id="estNote"></p>
-    <p class="small">Remember: AdSense pays out only after you pass <strong>$100</strong>, paid the 21st–26th of the following month. At $20/month, first cash takes ~5 months. Journey by Mediavine needs 1,000 sessions in 30 days from Tier-1 countries (US/UK/CA/AU) — so <em>where</em> visitors come from matters as much as how many.</p>
-  </div>
-</section>
-
-<!-- ================= TEST ================= -->
-<section id="test">
-  <h2>Week-1 go / no-go test — run this before buying a domain</h2>
-  <p>Seven days, 1 hour a day, free tools only. <strong>Days 1–2:</strong> search these 12 long-tail phrases in a private Google window and note who ranks in the top 5: <em>character counter without spaces · sentence counter online · case converter snake case · reading time calculator · word counter for essays · how many pages is 1000 words · character counter for twitter 280 · uppercase to lowercase converter · paragraph counter · word counter no signup · speaking time calculator · title case converter online</em>. <strong>Days 3–4:</strong> test this prototype against Microsoft Word / Google Docs on 5 samples, test it on a phone, and ask 5 real students or writers if they would return. <strong>Days 5–7:</strong> decide using the rules below.</p>
-  <div class="grid2">
-    <div class="card">
-      <h3><span class="badge go">GO</span> &nbsp;Build it, if ALL are true</h3>
-      <ul class="checklist">
-        <li>At least 6 of 12 phrases have a non-giant site in the top 5</li>
-        <li>At most 6 of 12 are fully answered by an AI Overview with no need to paste text</li>
-        <li>At least 2 small competitors in those results have 20%+ US/UK/CA/AU traffic</li>
-        <li>The prototype's counts match Word/Docs on at least 4 of 5 samples, and it is fast on a phone</li>
-        <li>At least 3 of 5 test users say they would come back</li>
-        <li>You can name 6 pages, each with its own specific long-tail angle</li>
-      </ul>
-    </div>
-    <div class="card">
-      <h3><span class="badge no">NO-GO</span> &nbsp;Stop, if ANY is true</h3>
-      <ul class="checklist">
-        <li>Giants fill the top 3 on 9+ of 12 phrases, with no small site in the top 5</li>
-        <li>Small competitors' traffic is 60%+ from low-paying countries (ad rate will be under $1)</li>
-        <li>The prototype counts wrong, or test users would not return</li>
-        <li>You cannot find 6 different long-tail angles — the space is already taken</li>
-      </ul>
-      <p class="small" style="margin-top:10px">If it is NO-GO: stop and pick a different niche with the same test. Do <strong>not</strong> fall back to image tools or affiliate without re-testing them — they scored worse.</p>
-    </div>
-  </div>
-</section>
-
-<!-- ================= PLAN ================= -->
-<section id="plan">
-  <h2>Your 30-day plan</h2>
-  <p class="small">One hour a day. One tool at a time. Nothing is bought and nothing extra is built in the first 30 days — no premium, no accounts, no image tools, no affiliate pages, no second site.</p>
-
-  <div class="phase">
-    <div class="when">Days 1–7 · Test first</div>
-    <h3>Run the week-1 test above</h3>
-    <p style="margin:0">Do the 12-phrase Google check, the accuracy test against Word/Docs, the phone test, and the 5-user test. <strong>Buy the domain only if the result is GO</strong> — one .com, about $10–15/year.</p>
-  </div>
-  <div class="phase">
-    <div class="when">Days 8–14 · Build the core — 3 pages</div>
-    <h3>Word Counter + Character Counter + Case Converter</h3>
-    <p style="margin:0">Put this hub live on GitHub Pages (free). Each tool gets its own page, its own title, and 600–900 words of genuinely useful text — how the counting works, character limits, worked examples. Add About, Contact and Privacy pages (needed for AdSense later), a sitemap, and Google Search Console. This page you are reading is the working prototype for all three tools.</p>
-  </div>
-  <div class="phase">
-    <div class="when">Days 15–21 · Add 2 more pages</div>
-    <h3>Sentence Counter + Reading-Time / Speaking-Time Calculator</h3>
-    <p style="margin:0">Link all tools together from one hub page and from each other. Fix any counting mistakes that show up. Do not add image tools. Do not add affiliate content.</p>
-  </div>
-  <div class="phase">
-    <div class="when">Days 22–30 · Submit and measure</div>
-    <h3>Apply for AdSense only now — then follow the data</h3>
-    <p style="margin:0">Apply for AdSense only once all 5 pages are live, indexed by Google, and carry real text (thin pages get rejected). Check Search Console impressions and clicks daily, inside your 1 hour. Add 1–2 more long-tail pages <em>only</em> if a page is already getting impressions. <strong>Day-30 decision:</strong> if impressions are still ~0 after indexing, re-check the week-1 search results before building anything more.</p>
-  </div>
-
-  <div class="card">
-    <h3>After day 30 — the honest timeline</h3>
-    <ul class="plain">
-      <li><strong>First $1 earned:</strong> month 2–4 if a page ranks and AdSense is approved; month 4–6 is more honest for a brand-new domain.</li>
-      <li><strong>$50–$200/month:</strong> 9–18 months realistic. 6–12 months only if traffic is mostly US/UK/CA/AU and Journey accepts the site.</li>
-      <li><strong>Growth rule:</strong> one new tool page at a time, only where Google already shows demand. Accuracy is the product — a counter that counts wrong loses everyone.</li>
-    </ul>
-  </div>
-</section>
-
-<footer>
-  <h3>Sources &amp; honesty notes</h3>
-  <ul class="plain">
-    <li>Final head-to-head research, read 5 Nov 2026. All competitor traffic is <em>estimated</em> by third-party tools — no small competitor's verified analytics or earnings exist publicly. Treat every money figure as a planning range, never a promise.</li>
-    <li>Traffic: <a href="https://hypestat.com/info/wordcount.com" target="_blank" rel="noopener">HypeStat — wordcount.com</a> · <a href="https://www.semrush.com/website/easywordcount.com/overview/?source=trending-websites" target="_blank" rel="noopener">Semrush — easywordcount.com (Sep 2026)</a> · <a href="https://www.semrush.com/website/compressor.io/overview/?source=trending-websites" target="_blank" rel="noopener">Semrush — compressor.io (Sep 2026)</a></li>
-    <li>Ad rates: <a href="https://www.outrank.so/blog/website-monetization-platforms" target="_blank" rel="noopener">Outrank — monetization survey (Productive Blogging 2025, 187 bloggers)</a> · <a href="https://www.shno.co/marketing-statistics/google-algorithm-impact-statistics" target="_blank" rel="noopener">Niche-site update study (7,105 sites)</a> · <a href="https://rexultz.com/blog/housefresh-affiliate-sites-surviving-google/" target="_blank" rel="noopener">HouseFresh case</a></li>
-    <li>Open questions the research could not verify: exact earnings of any small competitor; the true ad rate for a new tool site; domain prices (check at purchase); whether any option can hit $50–$200 <em>certainly</em> within 6–12 months — none can be guaranteed.</li>
-    <li>BotKeep plan details (free tier, beta status) are as described earlier in this conversation from botkeep.cloud — re-check its pricing page before relying on them, as beta terms can change.</li>
-  </ul>
+<footer class="site-footer">
+  <nav aria-label="Footer">
+    <a href="about/">About</a>
+    <a href="contact/">Contact</a>
+    <a href="privacy/">Privacy Policy</a>
+    <a href="terms/">Terms of Use</a>
+  </nav>
+  <p class="small">CountMyWords — free text tools that run in your browser.</p>
 </footer>
-
 </div>
-
-<script>
-(function(){
-  var ta = document.getElementById('mainText');
-  var words=[], text='';
-
-  function fmtTime(mins){
-    if(mins<=0) return '0 min';
-    if(mins<1) return '<1 min';
-    return Math.round(mins)+' min';
-  }
-  function update(){
-    text = ta.value;
-    var m = text.match(/[\p{L}\p{N}]+(?:['’\-][\p{L}\p{N}]+)*/gu);
-    words = m || [];
-    var noSpace = text.replace(/\s/g,'').length;
-    var sent = (text.match(/[.!?…]+(?=\s|$)/g)||[]).length;
-    if(sent===0 && words.length>0) sent = 1;
-    var paras = text.trim()==='' ? 0 : text.split(/\n\s*\n/).filter(function(p){return p.trim()!==''}).length;
-    if(paras===0 && words.length>0) paras = 1;
-    var longest = '—';
-    for(var i=0;i<words.length;i++){ if(longest==='—' || words[i].length>longest.length) longest = words[i]; }
-    document.getElementById('stWords').textContent = words.length.toLocaleString();
-    document.getElementById('stChars').textContent = text.length.toLocaleString();
-    document.getElementById('stCharsNo').textContent = noSpace.toLocaleString();
-    document.getElementById('stSent').textContent = sent.toLocaleString();
-    document.getElementById('stPara').textContent = paras.toLocaleString();
-    document.getElementById('stRead').textContent = fmtTime(words.length/200);
-    document.getElementById('stSpeak').textContent = fmtTime(words.length/130);
-    document.getElementById('stLong').textContent = longest.length>18 ? longest.slice(0,18)+'…' : longest;
-  }
-  ta.addEventListener('input', update);
-
-  /* Tabs */
-  var tabs = document.querySelectorAll('.tab');
-  tabs.forEach(function(t){
-    t.addEventListener('click', function(){
-      tabs.forEach(function(x){ x.setAttribute('aria-selected','false'); });
-      t.setAttribute('aria-selected','true');
-      document.getElementById('panel-case').hidden = t.dataset.tool!=='case';
-      document.getElementById('panel-read').hidden = t.dataset.tool!=='read';
-      ta.focus();
-    });
-  });
-
-  /* Case converter */
-  function toTitle(s){ return s.toLowerCase().replace(/(^|[\s(\["“])(\S)/g, function(m,p,c){ return p + c.toUpperCase(); }); }
-  document.querySelectorAll('[data-case]').forEach(function(b){
-    b.addEventListener('click', function(){
-      var s = ta.value, mode = b.dataset.case, out = s;
-      if(mode==='upper') out = s.toUpperCase();
-      else if(mode==='lower') out = s.toLowerCase();
-      else if(mode==='title') out = toTitle(s);
-      else if(mode==='sentence') out = s.toLowerCase().replace(/(^\s*[a-z])|([.!?]\s*[a-z])/g, function(m){ return m.toUpperCase(); });
-      else if(mode==='camel'){ var w = s.toLowerCase().split(/[^a-zA-Z0-9]+/).filter(Boolean); out = w.map(function(x,i){ return i===0?x:x.charAt(0).toUpperCase()+x.slice(1); }).join(''); }
-      else if(mode==='snake') out = s.trim().toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_+|_+$/g,'');
-      else if(mode==='kebab') out = s.trim().toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-      else if(mode==='alt') out = s.split('').map(function(c,i){ return i%2===0 ? c.toLowerCase() : c.toUpperCase(); }).join('');
-      else if(mode==='invert') out = s.split('').map(function(c){ return c===c.toUpperCase() ? c.toLowerCase() : c.toUpperCase(); }).join('');
-      ta.value = out; update();
-    });
-  });
-
-  /* Buttons */
-  document.getElementById('btnClear').addEventListener('click', function(){ ta.value=''; update(); ta.focus(); });
-  document.getElementById('btnSample').addEventListener('click', function(){
-    ta.value = "Good writing is clear writing. A word counter helps you check length before you send an essay, an article, or a job application.\n\nPaste your own text here and watch the numbers change as you type. Nothing you write leaves your device — every count happens right here in your browser.";
-    update();
-  });
-  document.getElementById('btnCopy').addEventListener('click', function(){
-    var msg = document.getElementById('copyMsg');
-    function done(ok){ msg.textContent = ok ? 'Copied ✓' : 'Copy failed — select the text and copy manually.'; setTimeout(function(){ msg.textContent=''; }, 2500); }
-    if(navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(ta.value).then(function(){ done(true); }, function(){ done(false); }); }
-    else { ta.select(); try{ done(document.execCommand('copy')); }catch(e){ done(false); } }
-  });
-  update();
-
-  /* Estimator */
-  var pv = document.getElementById('pvRange'), rpm = document.getElementById('rpmSel');
-  function est(){
-    var p = parseInt(pv.value,10), r = parseFloat(rpm.value);
-    document.getElementById('pvLabel').textContent = p.toLocaleString();
-    var money = p * r / 1000;
-    document.getElementById('estOut').textContent = '≈ $' + money.toFixed(money<10?2:0) + ' / month';
-    var visits = Math.round(p/1.55);
-    document.getElementById('estNote').textContent = 'That is about ' + visits.toLocaleString() + ' visits a month (at ~1.55 pages per visit, the rate seen on small word-counter sites). ' +
-      (money<50 ? 'Below your $50 goal at this rate.' : (money<=200 ? 'Inside your $50–$200 goal band at this rate.' : 'Above the $200 goal band at this rate.'));
-  }
-  pv.addEventListener('input', est);
-  rpm.addEventListener('change', est);
-  est();
-})();
-</script>
+<script src="assets/app.js"></script>
 </body>
 </html>
