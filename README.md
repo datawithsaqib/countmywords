@@ -4,7 +4,7 @@ Free text tools that run in your browser: Word Counter, Character Counter,
 Case Converter, Sentence Counter and Reading Time Calculator. No account,
 no sign-up, no server — text is counted on the visitor's own device.
 
-Live site: https://hayat-khan271.github.io/countmywords/
+Live site: https://datawithsaqib.github.io/countmywords/
 
 Note: this version is a cleanup of the first single-page build — all
 internal research notes were removed from the public pages.
@@ -55,12 +55,12 @@ keeps working on GitHub Pages.
 ## Deploy (GitHub Pages)
 
 1. Push these files to the `main` branch of the repository
-   `Hayat-Khan271/countmywords`.
+   `datawithsaqib/countmywords`.
 2. In the repository, go to Settings → Pages.
 3. Under Build and deployment, set Source to **Deploy from a branch**,
    Branch to **main**, Folder to **/(root)**, then Save.
 4. After a minute or two the site is live at
-   https://hayat-khan271.github.io/countmywords/
+   https://datawithsaqib.github.io/countmywords/
 
 ## Test
 
