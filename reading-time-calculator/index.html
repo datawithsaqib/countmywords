@@ -50,6 +50,14 @@
       </div>
       <p class="small" id="stReadDetail">Enter text to see an estimate.</p>
       <p class="small" id="stSpeakDetail"></p>
+      <div class="speed-row">
+        <label for="readSpeed">Reading speed:</label>
+        <select id="readSpeed">
+          <option value="150">Slow — 150 words per minute</option>
+          <option value="200" selected>Normal — 200 words per minute</option>
+          <option value="250">Fast — 250 words per minute</option>
+        </select>
+      </div>
       <div class="btnrow">
         <button class="btn primary" id="btnCopy" type="button">Copy text</button>
         <button class="btn" id="btnClear" type="button">Clear</button>
@@ -63,7 +71,7 @@
   </section>
   <section class="info-card" aria-label="How the estimates work">
     <h2>How the estimates work</h2>
-    <p>These are <strong>estimates, not exact predictions</strong>. Reading time is based on about 200 words per minute, and speaking time on about 130 words per minute, which is a normal speaking speed. Real times vary with the text, the topic and the reader — for example, a 1,000-word article takes about 5 minutes to read and about 7–8 minutes to speak aloud.</p>
+    <p>These are <strong>estimates, not exact predictions</strong>. Reading time is based on the speed you choose above: Slow is about 150 words per minute, Normal is about 200 words per minute, and Fast is about 250 words per minute. Speaking time is always based on about 130 words per minute, which is a normal speaking speed. Empty text gives 0 minutes. Real times vary with the text, the topic and the reader — for example, a 1,000-word article takes about 5 minutes to read at Normal speed and about 7–8 minutes to speak aloud. Very short texts show less than 1 minute, which is correct but not very useful — the estimates are most helpful for texts of a few hundred words or more.</p>
   </section>
 
   <section class="info-card" aria-label="How to use the reading time calculator">

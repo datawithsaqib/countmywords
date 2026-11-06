@@ -62,6 +62,7 @@
   <section class="info-card" aria-label="How sentences are counted">
     <h2>How sentences are counted</h2>
     <p>A sentence ends with a full stop, a question mark or an exclamation mark. Decimal numbers such as 3.14 are not split into two sentences, and blank lines are not counted as sentences. Empty text has 0 sentences, and text with words but no end mark counts as 1 sentence.</p>
+    <p>Abbreviations are a known limitation. Titles such as Dr. and Mr. and the short forms e.g. and i.e. are handled, so &ldquo;Dr. Smith left.&rdquo; counts as 2 sentences, not 3. But abbreviations that can also end a sentence, such as p.m. and U.S., are not always handled — &ldquo;He lives in the U.S. He left.&rdquo; may be counted as 3 sentences instead of 2 — and an abbreviation the counter does not know can also be miscounted. Sentence counting is a guide to the shape of your writing, not a grammar check.</p>
     <p>For example, &ldquo;Hello world. How are you? I am fine!&rdquo; is 8 words and 3 sentences.</p>
   </section>
 

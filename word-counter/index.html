@@ -66,6 +66,8 @@
     <h2>How words are counted</h2>
     <p>Words are groups of letters and numbers. A word with an apostrophe, such as <em>don&rsquo;t</em>, counts as one word, and a hyphenated word, such as <em>well-known</em>, also counts as one word. Numbers count as words, and text in other languages counts too. Extra spaces, line breaks and blank lines do not create extra words.</p>
     <p>For example, &ldquo;Hello world!&rdquo; is 2 words, 12 characters including the space, and 1 sentence.</p>
+    <h3>How other languages are counted</h3>
+    <p>This counter uses your browser&rsquo;s built-in word segmentation where it is available. That handles English and other space-separated languages, and it also splits Chinese and Japanese text into word units — for example, 你好世界 counts as 2 words (你好 + 世界), not 1 word and not 4 characters. That count is approximate: no word counter is exact for every language, and Chinese and Japanese have no spaces to mark word boundaries. In older browsers without word segmentation, a run of Chinese or Japanese characters counts as 1 word. Accented European letters, Turkish letters such as İ and ı, and Arabic script are counted as letters, the same as English letters. A decimal such as 3.14 counts as one word, and a number with commas such as 1,000 also counts as one word.</p>
   </section>
 
   <section class="info-card" aria-label="How to use the word counter for essays">

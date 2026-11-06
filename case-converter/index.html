@@ -80,7 +80,7 @@
       <li><strong>snake_case</strong> — words are joined with underscores: <em>hello_world</em>.</li>
       <li><strong>kebab-case</strong> — words are joined with hyphens: <em>hello-world</em>.</li>
     </ul>
-    <p>Conversion keeps your punctuation and spacing where the style allows it. For camelCase, PascalCase, snake_case and kebab-case, spaces and punctuation are replaced by the style&rsquo;s joining rule, because that is what those styles mean.</p>
+    <p>Conversion keeps your punctuation and spacing where the style allows it. For camelCase, PascalCase, snake_case and kebab-case, spaces and punctuation are replaced by the style&rsquo;s joining rule, because that is what those styles mean. An apostrophe inside a word is removed rather than splitting the word, so <em>don&rsquo;t</em> becomes <em>dontStop</em> in camelCase and <em>dont_stop</em> in snake_case. Uppercase and lowercase use your browser&rsquo;s locale, so Turkish dotted and dotless I and Greek letters follow the rules of that locale. Names with an internal capital, such as McDonald or iPhone, are split at that capital, so snake_case gives <em>mc_donald</em> and <em>i_phone</em> — check names before using them as code or file names.</p>
   </section>
 
   <section class="info-card" aria-label="How to use the case converter">
