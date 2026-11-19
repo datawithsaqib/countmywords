@@ -48,7 +48,47 @@
         <div class="stat"><b id="stWords">0</b><span>Words</span></div>
         <div class="stat"><b id="stSent">0</b><span>Sentences</span></div>
         <div class="stat"><b id="stPara">0</b><span>Paragraphs</span></div>
+        <div class="stat"><b id="stCodePoints">0</b><span>Code points</span></div>
+        <div class="stat"><b id="stUtf8Bytes">0</b><span>UTF-8 bytes</span></div>
+        <div class="stat"><b id="stXWeighted">0</b><span>X weighted count</span></div>
       </div>
+      <h3 style="margin-top:16px">Character breakdown</h3>
+      <div class="breakdown">
+        <div class="stat"><b id="stLetters">0</b><span>Letters</span></div>
+        <div class="stat"><b id="stDigits">0</b><span>Digits</span></div>
+        <div class="stat"><b id="stSpaces">0</b><span>Spaces</span></div>
+        <div class="stat"><b id="stPunct">0</b><span>Punctuation</span></div>
+        <div class="stat"><b id="stEmoji">0</b><span>Emoji</span></div>
+        <div class="stat"><b id="stSymbols">0</b><span>Symbols</span></div>
+      </div>
+      <h3 style="margin-top:16px">Platform limits</h3>
+      <div class="speed-row">
+        <label for="charPlatform">Check against:</label>
+        <select id="charPlatform">
+          <option value="x" selected>X (Twitter) — 280</option>
+          <option value="sms">SMS — 160 / 70 per message</option>
+          <option value="instagram">Instagram caption — 2,200</option>
+          <option value="linkedin">LinkedIn post — 3,000</option>
+          <option value="meta">Meta description — 160</option>
+        </select>
+      </div>
+      <div class="limit-bar"><span class="limit-fill" id="charPickedFill"></span></div>
+      <p class="small" id="charPickedText">0 / 280</p>
+      <p class="small" id="charSmsNote"></p>
+      <div class="limit-list">
+        <div class="limit-row"><span>X (Twitter) — 280*</span><div><div class="limit-bar"><span class="limit-fill" id="limitXFill"></span></div><span class="small" id="limitXText">0 / 280</span></div></div>
+        <div class="limit-row"><span>Instagram caption — 2,200</span><div><div class="limit-bar"><span class="limit-fill" id="limitInstagramFill"></span></div><span class="small" id="limitInstagramText">0 / 2,200</span></div></div>
+        <div class="limit-row"><span>LinkedIn post — 3,000</span><div><div class="limit-bar"><span class="limit-fill" id="limitLinkedInFill"></span></div><span class="small" id="limitLinkedInText">0 / 3,000</span></div></div>
+        <div class="limit-row"><span>Meta description — 160</span><div><div class="limit-bar"><span class="limit-fill" id="limitMetaFill"></span></div><span class="small" id="limitMetaText">0 / 160</span></div></div>
+        <div class="limit-row"><span>SMS — 160</span><div><div class="limit-bar"><span class="limit-fill" id="limitSmsFill"></span></div><span class="small" id="limitSmsText">0 / 160</span></div></div>
+      </div>
+      <p class="small">* The X bar uses the X weighted count (emoji count as 2, a link counts as 23), shown above as &ldquo;X weighted count&rdquo;. The other bars use the plain character count. SMS messages: <span id="stSmsSegments">0</span>.</p>
+      <div class="file-row">
+        <label for="fileUploadChar">Or load a .txt file:</label>
+        <input type="file" id="fileUploadChar" accept=".txt,text/plain"/>
+        <span class="small" id="fileUploadCharMsg" role="status"></span>
+      </div>
+      <p class="small">The file is read in your browser only. It is never uploaded to a server.</p>
       <div class="btnrow">
         <button class="btn primary" id="btnCopy" type="button">Copy text</button>
         <button class="btn" id="btnClear" type="button">Clear</button>
@@ -82,6 +122,29 @@
     <p>Check the count before you post, not after. Paste your draft into the box above, read the character count, and edit until it fits. That is faster than writing a post, finding it is too long, and then trying to shorten it in the small posting box.</p>
     <h3>When to check both numbers</h3>
     <p>Check both numbers when you are not sure which one a website uses. If the form says &ldquo;characters&rdquo; with no extra words, it usually means characters including spaces. If it says &ldquo;characters excluding spaces&rdquo;, use the second number. If you are writing for school, ask your teacher which number counts. A quick check here takes a few seconds, and it can save you from cutting a good paragraph by mistake, or from sending a text that is too long for the form.</p>
+  </section>
+  <section class="info-card" aria-label="Platform limits table and worked examples">
+    <h2>Platform character limits, with sources</h2>
+    <p>Limits change, and the only safe check is the place where you will publish. The table below gives the limits this page uses, and where each one comes from.</p>
+    <div class="table-scroll">
+    <table class="ref">
+      <thead><tr><th>Place</th><th>Limit</th><th>What it counts</th><th>Source</th></tr></thead>
+      <tbody>
+        <tr><td>X (Twitter) post</td><td>280</td><td>Weighted characters: most characters count 1, emoji count 2, a link counts 23</td><td>X Help Center — character limits for posts</td></tr>
+        <tr><td>Instagram caption</td><td>2,200</td><td>Characters including spaces</td><td>Instagram Help Center — caption limits</td></tr>
+        <tr><td>LinkedIn post</td><td>3,000</td><td>Characters including spaces</td><td>LinkedIn Help — post character limit</td></tr>
+        <tr><td>Meta description</td><td>About 155–160 shown</td><td>Not a hard limit: Google may show more or less, and may write its own description</td><td>Google Search Central — meta description guidance</td></tr>
+        <tr><td>SMS, plain Latin text</td><td>160 per message</td><td>Characters; a longer text is split into several messages</td><td>GSM 03.38 standard, as used by mobile networks</td></tr>
+        <tr><td>SMS, with emoji or non-Latin script</td><td>70 per message</td><td>Characters; the smaller limit applies as soon as one character needs Unicode encoding</td><td>GSM 03.38 / UCS-2 encoding, as used by mobile networks</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <h3>Worked examples</h3>
+    <p><strong>Example 1 — &ldquo;Hello 😀&rdquo;.</strong> This text is 7 characters including the space and 6 without it. The breakdown shows 5 letters, 1 space, 1 emoji, and 0 digits, punctuation or symbols. It is 7 code points and 10 UTF-8 bytes, because the emoji 😀 takes 4 bytes in UTF-8 while each Latin letter and the space take 1 byte each (6 + 4 = 10). The X weighted count is 8, because the emoji counts as 2 (5 letters + 1 space + 2 for the emoji). A text can therefore fit the plain character count and still be over the X weighted count if it has many emoji.</p>
+    <p><strong>Example 2 — an SMS that splits.</strong> A plain Latin message of 170 characters needs 2 SMS messages (160 + 10), and you are usually charged for both. Add one emoji to the same message and the limit per message drops to 70, so the same 170 characters now need 3 messages (70 + 70 + 30). That is why the picker on this page shows the segment size for your exact text, not a fixed 160: choose &ldquo;SMS&rdquo; in the picker and read the note under the bar.</p>
+    <p><strong>Example 3 — a meta description.</strong> Write a description of 200 characters for a web page. The meta-description bar shows &ldquo;200 / 160 — over by 40&rdquo;, and the last 40 characters will probably be cut off in search results. Cut the description to about 155 characters, keeping the main point and the most important words at the start, because Google sometimes cuts the description even earlier on a narrow phone screen. There is no hard limit that makes a longer description an error — it is only cut off in the display — but a cut-off description reads badly, so the bar is worth checking.</p>
+    <h3>Code points and UTF-8 bytes, in plain words</h3>
+    <p>A code point is one unit of text in Unicode: &ldquo;A&rdquo; is one code point, &ldquo;é&rdquo; is one code point, and 😀 is one code point. A visible character is usually one code point, but not always — a flag is two code points, and a family emoji joined with invisible joiners is several code points, while this counter still shows it as one visible character. UTF-8 bytes are how much space the text takes when it is stored or sent: Latin letters and digits take 1 byte each, most accented letters take 2 bytes, and most emoji take 4 bytes. A form that limits you by bytes rather than characters — some older systems do — will run out sooner on emoji than on plain letters, and the byte count on this page shows you by how much.</p>
   </section>
   <section aria-label="Related tools">
     <h2>Related tools</h2>

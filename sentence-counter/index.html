@@ -47,6 +47,26 @@
         <div class="stat"><b id="stWords">0</b><span>Words</span></div>
         <div class="stat"><b id="stChars">0</b><span>Characters</span></div>
         <div class="stat"><b id="stPara">0</b><span>Paragraphs</span></div>
+        <div class="stat"><b id="stAvgSent">0</b><span>Avg words / sentence</span></div>
+        <div class="stat"><b id="stLongestSent">—</b><span>Longest sentence</span></div>
+        <div class="stat"><b id="stShortestSent">—</b><span>Shortest sentence</span></div>
+      </div>
+      <p class="small">Longest: <span id="stLongestSentPreview"></span></p>
+      <p class="small">Shortest: <span id="stShortestSentPreview"></span></p>
+      <div class="file-row">
+        <label for="fileUploadSent">Or load a .txt file:</label>
+        <input type="file" id="fileUploadSent" accept=".txt,text/plain"/>
+        <span class="small" id="fileUploadSentMsg" role="status"></span>
+      </div>
+      <p class="small">The file is read in your browser only. It is never uploaded to a server.</p>
+      <div class="sent-list" aria-label="Per-sentence list">
+        <h3>Each sentence, with its word count</h3>
+        <div id="sentenceList"><p class="small">Type or paste text to see each sentence listed here, with its word count.</p></div>
+      </div>
+      <div class="btnrow">
+        <button class="btn" id="btnCopySentReport" type="button">Copy sentence report</button>
+        <button class="btn" id="btnDownloadSentReport" type="button">Download report (.txt)</button>
+        <span class="small" id="sentReportMsg" role="status"></span>
       </div>
       <div class="btnrow">
         <button class="btn primary" id="btnCopy" type="button">Copy text</button>
@@ -62,7 +82,7 @@
   <section class="info-card" aria-label="How sentences are counted">
     <h2>How sentences are counted</h2>
     <p>A sentence ends with a full stop, a question mark or an exclamation mark. Decimal numbers such as 3.14 are not split into two sentences, and blank lines are not counted as sentences. Empty text has 0 sentences, and text with words but no end mark counts as 1 sentence.</p>
-    <p>Abbreviations are a known limitation. Titles such as Dr. and Mr. and the short forms e.g. and i.e. are handled, so &ldquo;Dr. Smith left.&rdquo; counts as 2 sentences, not 3. But abbreviations that can also end a sentence, such as p.m. and U.S., are not always handled — &ldquo;He lives in the U.S. He left.&rdquo; may be counted as 3 sentences instead of 2 — and an abbreviation the counter does not know can also be miscounted. Sentence counting is a guide to the shape of your writing, not a grammar check.</p>
+    <p>Abbreviations are handled as follows. Titles such as Dr. and Mr. and the short forms e.g. and i.e. are handled, so &ldquo;Dr. Smith left.&rdquo; counts as 2 sentences, not 3. Abbreviations that can also end a sentence, such as p.m. and U.S., are handled too: &ldquo;He lives in the U.S. He left.&rdquo; counts as 2 sentences, and &ldquo;It is 3 p.m. He left.&rdquo; also counts as 2, while &ldquo;He lives in the U.S. today.&rdquo; counts as 1, because the word after &ldquo;U.S.&rdquo; starts with a small letter. Initials are handled as well: &ldquo;J. R. R. Tolkien wrote books.&rdquo; counts as 1 sentence, not 4. One case is still a known limitation: &ldquo;The U.S. Government announced a plan.&rdquo; is handled (1 sentence), but an abbreviation the counter does not know, or &ldquo;U.S.&rdquo; before a capitalised word the counter does not expect, can still be miscounted. Sentence counting is a guide to the shape of your writing, not a grammar check.</p>
     <p>For example, &ldquo;Hello world. How are you? I am fine!&rdquo; is 8 words and 3 sentences.</p>
   </section>
 
@@ -81,6 +101,16 @@
     <p>First, paste your full draft and read the sentence, word and paragraph counts together. Divide the word count by the sentence count to find your average sentence length. Then look for the longest sentences. You can find them by reading through the text and marking any sentence that takes more than two lines.</p>
     <p>Second, check the balance. If most sentences are long, shorten a few. If most are short, join a few short sentences into a longer one where the ideas belong together. Third, check the paragraph count. If you have a 1,000-word essay with only two paragraphs, split it. If you have 20 paragraphs for the same length, join some of them.</p>
     <p>Finally, remember that counting sentences does not check grammar or meaning. A sentence can be counted correctly and still be unclear. Use the count as a guide, then read the text yourself, or ask someone else to read it, before you hand it in.</p>
+  </section>
+  <section class="info-card" aria-label="Worked examples for the sentence counter">
+    <h2>Worked examples: what the counter actually shows</h2>
+    <p>These examples were checked with this counter, so the numbers below are the numbers the tool shows — not numbers copied from another website.</p>
+    <p><strong>Example 1.</strong> Paste &ldquo;Hello world. How are you? I am fine!&rdquo; The counter shows 8 words and 3 sentences, and the per-sentence list shows sentence 1, &ldquo;Hello world.&rdquo; (2 words), sentence 2, &ldquo;How are you?&rdquo; (3 words), and sentence 3, &ldquo;I am fine!&rdquo; (3 words). The average is 8 ÷ 3 = 2.7 words per sentence. The longest and shortest sentences are both shown: the longest is 3 words (&ldquo;How are you?&rdquo; or &ldquo;I am fine!&rdquo;), and the shortest is 2 words (&ldquo;Hello world.&rdquo;). Short sentences like these are normal in dialogue and in simple examples, but an essay made only of sentences this short would sound choppy.</p>
+    <p><strong>Example 2 — abbreviations.</strong> Paste &ldquo;He lives in the U.S. He left.&rdquo; The counter shows 2 sentences: &ldquo;He lives in the U.S.&rdquo; (5 words) and &ldquo;He left.&rdquo; (2 words), an average of 3.5 words per sentence. Paste &ldquo;Dr. Smith left at 3 p.m. yesterday.&rdquo; and it shows 1 sentence, because &ldquo;Dr.&rdquo; is a title and &ldquo;p.m.&rdquo; is followed by the small-letter word &ldquo;yesterday&rdquo;. Paste &ldquo;J. R. R. Tolkien wrote The Hobbit.&rdquo; and it shows 1 sentence, because each single-letter initial belongs to the name that follows it.</p>
+    <p><strong>Example 3 — a long sentence is flagged.</strong> Paste this 34-word sentence: &ldquo;When the students finished their essays late on Friday evening, after working for many hours in the library without a break, they handed them in and went home to rest before the next day.&rdquo; The counter shows 1 sentence and 34 words, the per-sentence list flags it as &ldquo;Long — over 25 words&rdquo;, and the longest-sentence box shows &ldquo;34 words&rdquo; with the start of the sentence as a preview. A sentence that long is not wrong by itself, but it is worth reading aloud: if you run out of breath, split it after &ldquo;evening&rdquo; or after &ldquo;break&rdquo; and check the list again.</p>
+    <p><strong>Example 4 — using the report.</strong> Paste a full essay, then use &ldquo;Copy sentence report&rdquo; or &ldquo;Download report (.txt)&rdquo;. The report lists every sentence with its number and word count, for example &ldquo;#1 (18 words): The river runs through the town.&rdquo;, and marks any sentence over 25 words as LONG. That list is easier to work through than the essay itself: start with the flagged sentences, shorten or split them, paste the new version back, and watch the average words per sentence fall. A file upload works the same way — choose a .txt file and the whole file is counted in the browser, without being uploaded anywhere.</p>
+    <h3>What the average tells you, and what it does not</h3>
+    <p>The average words per sentence is the total word count divided by the sentence count. An average of 15 to 20 words per sentence suits most essays and articles. An average under 10 usually means the writing sounds clipped, as if every idea is a separate announcement. An average over 25 usually means the reader has to hold too much in mind at once. But the average alone hides the shape: a text with ten 5-word sentences and ten 35-word sentences averages 20 words per sentence and looks fine, while the reader actually swings between very short and very long. That is why this page shows the longest and shortest sentences and lists every sentence — read the list, not just the average, and look for a mix rather than a single number.</p>
   </section>
   <section aria-label="Related tools">
     <h2>Related tools</h2>

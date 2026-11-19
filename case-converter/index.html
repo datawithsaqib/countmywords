@@ -57,6 +57,45 @@
         <div class="stat"><b id="stWords">0</b><span>Words</span></div>
         <div class="stat"><b id="stChars">0</b><span>Characters</span></div>
       </div>
+      <h2 style="margin-top:16px">All styles at once</h2>
+      <p class="small">Every style below is shown live from the text above. Copy one card without changing your text, or use the buttons above to replace the text in the box.</p>
+      <div class="case-cards">
+        <div class="case-card"><h3>UPPERCASE</h3><code id="casePrevUpper">—</code><button class="btn" type="button" data-copy-case="upper">Copy UPPERCASE</button></div>
+        <div class="case-card"><h3>lowercase</h3><code id="casePrevLower">—</code><button class="btn" type="button" data-copy-case="lower">Copy lowercase</button></div>
+        <div class="case-card"><h3>Title Case</h3><code id="casePrevTitle">—</code><button class="btn" type="button" data-copy-case="title">Copy Title Case</button></div>
+        <div class="case-card"><h3>Sentence case</h3><code id="casePrevSentence">—</code><button class="btn" type="button" data-copy-case="sentence">Copy Sentence case</button></div>
+        <div class="case-card"><h3>camelCase</h3><code id="casePrevCamel">—</code><button class="btn" type="button" data-copy-case="camel">Copy camelCase</button></div>
+        <div class="case-card"><h3>PascalCase</h3><code id="casePrevPascal">—</code><button class="btn" type="button" data-copy-case="pascal">Copy PascalCase</button></div>
+        <div class="case-card"><h3>snake_case</h3><code id="casePrevSnake">—</code><button class="btn" type="button" data-copy-case="snake">Copy snake_case</button></div>
+        <div class="case-card"><h3>kebab-case</h3><code id="casePrevKebab">—</code><button class="btn" type="button" data-copy-case="kebab">Copy kebab-case</button></div>
+        <div class="case-card"><h3>CONSTANT_CASE</h3><code id="casePrevConstant">—</code><button class="btn" type="button" data-copy-case="constant">Copy CONSTANT_CASE</button></div>
+        <div class="case-card"><h3>alternating case</h3><code id="casePrevAlternating">—</code><button class="btn" type="button" data-copy-case="alternating">Copy alternating case</button></div>
+      </div>
+      <p class="small" id="caseCopyMsg" role="status"></p>
+      <h2 style="margin-top:16px">Batch conversion, line by line</h2>
+      <p class="small">Put one phrase on each line. Each line is converted on its own, so a list of headings or file names stays a list.</p>
+      <label class="sr" for="batchText">Lines to convert</label>
+      <textarea id="batchText" placeholder="one phrase per line&#10;second phrase here&#10;third phrase here" style="min-height:120px"></textarea>
+      <div class="speed-row">
+        <label for="batchCase">Convert each line to:</label>
+        <select id="batchCase">
+          <option value="upper">UPPERCASE</option>
+          <option value="lower">lowercase</option>
+          <option value="title">Title Case</option>
+          <option value="sentence">Sentence case</option>
+          <option value="camel">camelCase</option>
+          <option value="pascal">PascalCase</option>
+          <option value="snake" selected>snake_case</option>
+          <option value="kebab">kebab-case</option>
+          <option value="constant">CONSTANT_CASE</option>
+          <option value="alternating">alternating case</option>
+        </select>
+        <button class="btn primary" id="btnBatchConvert" type="button">Convert lines</button>
+        <button class="btn" id="btnCopyBatch" type="button">Copy result</button>
+        <span class="small" id="batchMsg" role="status"></span>
+      </div>
+      <label class="sr" for="batchOutput">Converted lines</label>
+      <textarea id="batchOutput" readonly placeholder="Converted lines appear here…" style="min-height:120px"></textarea>
       <div class="btnrow">
         <button class="btn primary" id="btnCopy" type="button">Copy text</button>
         <button class="btn" id="btnClear" type="button">Clear</button>
@@ -99,6 +138,17 @@
     <p>For long text, Title Case is not the right choice. It makes a paragraph hard to read. Use Title Case for titles only, and Sentence case for the text under the title.</p>
     <h3>Tips and limits</h3>
     <p>Conversion keeps your punctuation and spacing where the style allows it. For camelCase, PascalCase, snake_case and kebab-case, spaces and punctuation are replaced by the joining rule of that style, because that is what those styles mean. Numbers and names in other languages are handled as letters and numbers, but check the result if your text uses a script other than Latin letters. Always read the converted text once before you paste it into your work, especially if it is a file name or a piece of code, because a small change in a name can break a link or a program.</p>
+  </section>
+  <section class="info-card" aria-label="snake_case in detail and worked examples">
+    <h2>snake_case in detail</h2>
+    <p>Snake_case joins words with underscores and uses small letters throughout: &ldquo;hello world&rdquo; becomes &ldquo;hello_world&rdquo;, &ldquo;Word Counter&rdquo; becomes &ldquo;word_counter&rdquo;, and &ldquo;reading time calculator&rdquo; becomes &ldquo;reading_time_calculator&rdquo;. It is the usual style for file names, database columns, and variable names in Python and Ruby, because underscores are allowed in names in those languages and spaces are not, and because an underscore is easier to see than a missing space. A file called &ldquo;my_essay_final.docx&rdquo; is easier to read and to type than &ldquo;myessayfinal.docx&rdquo;, and a web address with underscores is easier to copy than one with %20 in place of spaces — though hyphens (kebab-case) are more common in web addresses, because search engines treat a hyphen as a word separator and an underscore as part of the word.</p>
+    <p>Three rules cover most mistakes. First, remove punctuation before you join: &ldquo;don&rsquo;t stop!&rdquo; becomes &ldquo;dont_stop&rdquo;, because the apostrophe is removed rather than splitting the word, and the exclamation mark is dropped. Second, numbers stay where they are: &ldquo;chapter 2 notes&rdquo; becomes &ldquo;chapter_2_notes&rdquo;, not &ldquo;chapter2notes&rdquo;. Third, check names with an internal capital before you use the result: &ldquo;McDonald&rdquo; becomes &ldquo;mc_donald&rdquo; and &ldquo;iPhone&rdquo; becomes &ldquo;i_phone&rdquo;, because the converter splits at the capital letter. If you wanted &ldquo;mcdonald&rdquo; or &ldquo;iphone&rdquo;, fix it by hand after converting.</p>
+    <h3>CONSTANT_CASE and alternating case</h3>
+    <p>CONSTANT_CASE is snake_case in capitals: &ldquo;hello world&rdquo; becomes &ldquo;HELLO_WORLD&rdquo;. It is the usual style for constants in code — values that never change, such as &ldquo;MAX_RETRIES&rdquo; or &ldquo;DEFAULT_SPEED&rdquo; — because the capitals tell the reader at a glance that the value is fixed. Alternating case is a playful style, not a working style: the first letter is small and the letters then alternate, so &ldquo;hello world&rdquo; becomes &ldquo;hElLo WoRlD&rdquo;. Spaces and punctuation stay where they are and do not change the pattern. Do not use alternating case in a file name, a heading, or code — use it only where the odd look is the point.</p>
+    <h3>Worked examples: one phrase, ten styles</h3>
+    <p>Start with &ldquo;hello world, this is a test&rdquo; and the cards above show all ten styles at once: UPPERCASE gives &ldquo;HELLO WORLD, THIS IS A TEST&rdquo;; lowercase gives &ldquo;hello world, this is a test&rdquo;; Title Case gives &ldquo;Hello World, This Is A Test&rdquo;; Sentence case gives &ldquo;Hello world, this is a test&rdquo;; camelCase gives &ldquo;helloWorldThisIsATest&rdquo;; PascalCase gives &ldquo;HelloWorldThisIsATest&rdquo;; snake_case gives &ldquo;hello_world_this_is_a_test&rdquo;; kebab-case gives &ldquo;hello-world-this-is-a-test&rdquo;; CONSTANT_CASE gives &ldquo;HELLO_WORLD_THIS_IS_A_TEST&rdquo;; and alternating case gives &ldquo;hElLo WoRlD, tHiS iS a TeSt&rdquo;.</p>
+    <p><strong>Batch example.</strong> Put three lines in the batch box — &ldquo;Word Counter&rdquo;, &ldquo;Character Counter&rdquo; and &ldquo;Reading Time&rdquo; — choose snake_case and press &ldquo;Convert lines&rdquo;. The result is three lines: &ldquo;word_counter&rdquo;, &ldquo;character_counter&rdquo; and &ldquo;reading_time&rdquo;. Empty lines stay empty, so a blank line in your list stays a blank line in the result, and each line is converted on its own, so a long phrase on one line never joins with the next line.</p>
+    <p><strong>Fixing a Caps Lock mistake.</strong> If you typed &ldquo;HELLO WORLD, THIS IS A TEST&rdquo; with Caps Lock on, choose lowercase to get &ldquo;hello world, this is a test&rdquo;, then choose Sentence case to get &ldquo;Hello world, this is a test&rdquo;. Two clicks fix a mistake that would take a minute to retype. Check the first letter of each sentence after a lowercase conversion, because lowercase on its own does not add capitals at the start of sentences.</p>
   </section>
   <section aria-label="Related tools">
     <h2>Related tools</h2>

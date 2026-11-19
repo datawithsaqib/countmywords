@@ -56,8 +56,24 @@
           <option value="150">Slow — 150 words per minute</option>
           <option value="200" selected>Normal — 200 words per minute</option>
           <option value="250">Fast — 250 words per minute</option>
+          <option value="238">Research — 238 words per minute (Brysbaert, 2019)</option>
         </select>
       </div>
+      <div class="speed-row">
+        <label for="readSpeedCustom">Or your own speed (50–1000 words per minute):</label>
+        <input type="number" id="readSpeedCustom" min="50" max="1000" step="1" placeholder="e.g. 220" aria-label="Custom reading speed in words per minute"/>
+        <span class="small">Leave blank to use the choice above.</span>
+      </div>
+      <div class="speed-row">
+        <label for="speakSpeedCustom">Speaking speed (50–300 words per minute):</label>
+        <input type="number" id="speakSpeedCustom" min="50" max="300" step="1" placeholder="130" aria-label="Custom speaking speed in words per minute"/>
+        <span class="small">Default is 130. Change it if you know you speak faster or slower.</span>
+      </div>
+      <div class="alt-inputs">
+        <label>Or type a word count<input type="number" id="wordCountInput" min="1" step="1" placeholder="e.g. 1000" aria-label="Word count"/><span>Use this instead of the text box.</span></label>
+        <label>Or type a page count<input type="number" id="pageCountInput" min="0.5" step="0.5" placeholder="e.g. 4" aria-label="Page count"/><span>1 page = about 250 words (double-spaced).</span></label>
+      </div>
+      <p class="small">The word-count box takes priority if you fill it in, then the page count, then the words in the text box. The detail line under the results says which one was used.</p>
       <div class="btnrow">
         <button class="btn primary" id="btnCopy" type="button">Copy text</button>
         <button class="btn" id="btnClear" type="button">Clear</button>
@@ -88,6 +104,35 @@
     <p>For a lesson or a video, the same idea applies. Plan the main points first, then write the script, then check the time. If the script is too long, cut a whole point rather than speaking faster. A clear talk that finishes on time is better than a rushed talk that tries to cover too much.</p>
     <h3>Tips and limits</h3>
     <p>Do not use the reading time for a single sentence or a very short text. The estimate is most useful for texts of a few hundred words or more. For short texts, the time is less than a minute, and the difference between reading and speaking is small. Also, do not treat the estimate as a promise. If you need an exact time, read the text aloud with a timer. The calculator gives you a quick plan; the timer gives you the real time.</p>
+  </section>
+  <section class="info-card" aria-label="Reading time reference table">
+    <h2>Reading time reference table</h2>
+    <p>The table below uses the same speeds as the calculator, worked out for common lengths. Reading speeds are Slow (150 words per minute), Normal (200), Fast (250) and Speaking (130). Times are in minutes and seconds.</p>
+    <div class="table-scroll">
+    <table class="ref">
+      <thead><tr><th>Words</th><th>Slow — 150 wpm</th><th>Normal — 200 wpm</th><th>Fast — 250 wpm</th><th>Speaking — 130 wpm</th></tr></thead>
+      <tbody>
+        <tr><td>300</td><td>2 min</td><td>1 min 30 sec</td><td>1 min 12 sec</td><td>2 min 18 sec</td></tr>
+        <tr><td>500</td><td>3 min 20 sec</td><td>2 min 30 sec</td><td>2 min</td><td>3 min 51 sec</td></tr>
+        <tr><td>1,000</td><td>6 min 40 sec</td><td>5 min</td><td>4 min</td><td>7 min 42 sec</td></tr>
+        <tr><td>2,000</td><td>13 min 20 sec</td><td>10 min</td><td>8 min</td><td>15 min 23 sec</td></tr>
+        <tr><td>5,000</td><td>33 min 20 sec</td><td>25 min</td><td>20 min</td><td>38 min 28 sec</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="small">Check one row against the calculator: 500 words at Normal speed is 500 ÷ 200 = 2.5 minutes, which is 2 minutes 30 seconds. If the calculator shows something else for the same input, the calculator is wrong — tell us through the Contact page.</p>
+  </section>
+  <section class="info-card" aria-label="Where the 238 words per minute figure comes from">
+    <h2>Where the 238 words per minute figure comes from</h2>
+    <p>The Research preset, 238 words per minute, comes from Brysbaert (2019), &ldquo;How many words do we read per minute? A review and meta-analysis of reading rate&rdquo;, published in the <em>Journal of Memory and Language</em>. Brysbaert reviewed published studies of silent reading in English and found an average of about 238 words per minute for non-fiction and about 260 words per minute for fiction. That is an average across many readers and many texts, not a speed every reader should aim for, and it does not mean a difficult text reads at 238 words per minute — a dense textbook chapter will be slower, and a light novel will often be faster.</p>
+    <p>That is why this page offers four speeds instead of one. Slow (150) fits a difficult text, a text in a second language, or careful study reading, where you stop to think. Normal (200) is a round, easy-to-remember middle speed for ordinary articles. Fast (250) fits easy, familiar material. Research (238) is there for readers who want the published average rather than a round number. If you know your own speed — for example, you timed yourself reading a 1,000-word article in 4 minutes, which is 250 words per minute — type it in the custom speed box and the calculator will use that instead.</p>
+    <h3>Worked examples</h3>
+    <p><strong>Example 1 — a 650-word essay.</strong> At Normal speed (200 words per minute), 650 ÷ 200 = 3.25 minutes, which is 3 minutes 15 seconds to read. At Slow speed it is 650 ÷ 150 = 4 minutes 20 seconds, and to speak aloud at 130 words per minute it is 650 ÷ 130 = 5 minutes exactly. So the same essay takes between about 3 minutes and 5 minutes depending on what you do with it — a useful range to quote when someone asks how long it is.</p>
+    <p><strong>Example 2 — a 10-minute talk.</strong> A talk is planned backwards from the time, not forwards from the words. Ten minutes at 130 words per minute is 10 × 130 = 1,300 words. If your script is 1,300 words, the calculator will show a speaking time of 10 minutes. If your script is 2,000 words, it will show 15 minutes 23 seconds, which means you must cut about 700 words or accept running over. The calculator shows minutes and seconds, not whole minutes only, so a script of 1,450 words shows 11 minutes 9 seconds of speaking time — enough to see that it is over by a minute, not just &ldquo;about 11 minutes&rdquo;.</p>
+    <p><strong>Example 3 — pages instead of words.</strong> Suppose you have a 4-page handout and no word count. Type 4 in the page-count box. The calculator uses about 250 words per double-spaced page, so 4 pages is about 1,000 words, which is 5 minutes to read at Normal speed and 7 minutes 42 seconds to speak. If your pages are single-spaced, they hold about 500 words each instead, so type 8 in the page-count box (or type 2,000 in the word-count box) to get the same answer by the other route.</p>
+    <p><strong>Example 4 — a short text.</strong> A 90-word announcement at Normal speed is 90 ÷ 200 = 0.45 minutes, which is 27 seconds to read and 42 seconds to speak (90 ÷ 130 = 0.69 minutes). The calculator shows seconds for short texts instead of rounding to &ldquo;0 minutes&rdquo; or &ldquo;less than 1 minute&rdquo;, because 27 seconds is a real answer and &ldquo;less than 1 minute&rdquo; is not.</p>
+    <h3>Reading speed by type of text</h3>
+    <p>Speed depends on the text more than on the reader. A news article, a story, or a set of simple instructions usually reads near the Normal or Fast speed. A textbook, a legal document, or a text full of numbers and names usually reads near the Slow speed, because you stop, re-read, and check details. Poetry and dialogue read slowly even though the words are short, because the meaning sits between the lines. None of this is a fault in the reader — it is the text asking for more time. When you plan, pick the speed that matches the text, not the speed you wish you read at, and add a minute or two for questions or pauses if other people are listening.</p>
   </section>
   <section aria-label="Related tools">
     <h2>Related tools</h2>

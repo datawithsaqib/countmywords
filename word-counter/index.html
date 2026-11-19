@@ -49,6 +49,29 @@
         <div class="stat"><b id="stSent">0</b><span>Sentences</span></div>
         <div class="stat"><b id="stPara">0</b><span>Paragraphs</span></div>
         <div class="stat"><b id="stRead">0 min</b><span>Reading time</span></div>
+        <div class="stat"><b id="stUniqueWords">0</b><span>Unique words</span></div>
+        <div class="stat"><b id="stAvgWordLen">0</b><span>Avg word length</span></div>
+      </div>
+      <h3 style="margin-top:16px">Essay word goal</h3>
+      <div class="goal-row" role="group" aria-label="Essay word goal presets">
+        <button class="btn" type="button" data-goal="250">250</button>
+        <button class="btn" type="button" data-goal="500">500</button>
+        <button class="btn" type="button" data-goal="650">650</button>
+        <button class="btn" type="button" data-goal="1000">1000</button>
+        <button class="btn" type="button" data-goal="1500">1500</button>
+        <button class="btn" type="button" data-goal="3000">3000</button>
+      </div>
+      <div class="progress-bar" role="progressbar" aria-label="Progress towards word goal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span class="progress-fill" id="goalProgressFill"></span></div>
+      <p class="small" id="goalProgressText">Choose a word goal above to track your progress.</p>
+      <p class="small" id="goalSafeText"></p>
+      <h3 style="margin-top:16px">Platform limits (characters)</h3>
+      <p class="small">These bars use your character count, because the limits below are character limits. See the <a href="../character-counter/">Character Counter</a> for the same bars with a platform picker.</p>
+      <div class="limit-list">
+        <div class="limit-row"><span>X (Twitter) — 280</span><div><div class="limit-bar"><span class="limit-fill" id="limitXFill"></span></div><span class="small" id="limitXText">0 / 280</span></div></div>
+        <div class="limit-row"><span>Instagram caption — 2,200</span><div><div class="limit-bar"><span class="limit-fill" id="limitInstagramFill"></span></div><span class="small" id="limitInstagramText">0 / 2,200</span></div></div>
+        <div class="limit-row"><span>LinkedIn post — 3,000</span><div><div class="limit-bar"><span class="limit-fill" id="limitLinkedInFill"></span></div><span class="small" id="limitLinkedInText">0 / 3,000</span></div></div>
+        <div class="limit-row"><span>Meta description — 160</span><div><div class="limit-bar"><span class="limit-fill" id="limitMetaFill"></span></div><span class="small" id="limitMetaText">0 / 160</span></div></div>
+        <div class="limit-row"><span>SMS — 160</span><div><div class="limit-bar"><span class="limit-fill" id="limitSmsFill"></span></div><span class="small" id="limitSmsText">0 / 160</span></div></div>
       </div>
       <div class="btnrow">
         <button class="btn primary" id="btnCopy" type="button">Copy text</button>
@@ -85,6 +108,15 @@
     <p>Counting words helps you plan. If your limit is 1,000 words and you have three main points, you can plan about 300 words for each point and about 100 words for the introduction and conclusion together. That plan is easier to follow than writing without a target and then trying to cut the text down.</p>
     <p>If you are over the limit, look for repeated ideas, long examples that say the same thing twice, and sentences that could be shorter. If you are under the limit, look for a point that needs more evidence or a clearer example. Do not add filler sentences just to reach the number. A clear essay that is a little short is better than a long essay that repeats itself.</p>
     <p>A word counter with no sign-up is useful here because you can check your work quickly, as often as you like, without creating an account or uploading your essay to a website. Paste the text, check the number, edit, and check again. That is the whole process, and it takes less than a minute. In short: open the page, paste your essay, and read the count — no sign-up needed.</p>
+  </section>
+  <section class="info-card" aria-label="Worked examples, word goals and platform limits">
+    <h2>Worked examples: word goals, unique words and platform limits</h2>
+    <p><strong>Example 1 — a 500-word essay goal.</strong> Choose the 500 goal above and paste a draft of 430 words. The progress bar shows 86%, and the text reads &ldquo;430 / 500 words (86%) — Below the safe zone — add about 20 words to reach it.&rdquo; The safe zone is 450–550 words, which is the goal plus or minus 10%. At 430 words you are 20 words short of the bottom of that zone, so one short paragraph or two or three sentences of evidence will bring you inside it. At 560 words the same goal would read &ldquo;Above the safe zone — cut about 10 words&rdquo;, because the top of the zone is 550. The bar turns red only when you pass the top of the safe zone, not when you pass the goal itself, because being a few words over the exact goal is normal.</p>
+    <p><strong>Example 2 — unique words and average word length.</strong> Paste &ldquo;The cat sat on the mat. The cat was happy.&rdquo; The counter shows 10 words and 7 unique words (&ldquo;the&rdquo; appears three times and &ldquo;cat&rdquo; twice, so 10 words minus 3 repeats is 7), and an average word length of 3.1 characters. Now paste the same idea written differently: &ldquo;The cat sat on the mat, content and sleepy.&rdquo; That is 9 words, 9 unique words, and an average word length of 3.9 characters. The unique-word count does not measure quality — a text can repeat words well — but a sudden drop in unique words across a long essay is a sign that the same few words are doing all the work. Check it paragraph by paragraph rather than once for the whole essay.</p>
+    <p><strong>Example 3 — does it fit on X?</strong> Paste a draft post of 320 characters. The X bar shows &ldquo;320 / 280 — over by 40&rdquo;, so the post does not fit as one post on X. Cut 40 characters — for example, remove the word &ldquo;really&rdquo; (6 letters plus a space) and shorten &ldquo;because&rdquo; to &ldquo;as&rdquo; — and the bar moves under the limit. The same 320 characters are a small part of an Instagram caption (2,200) and a tiny part of a LinkedIn post (3,000), so the answer depends on where the text is going, not only on how long it is. A meta description of 320 characters is far too long: search results usually show only about the first 155–160 characters, so the second half would be cut off. The SMS bar shows the same 320 characters as two messages of 160 characters each.</p>
+    <p><strong>Example 4 — the 650-word college essay.</strong> Many college applications ask for about 650 words, which is why 650 is one of the goal presets. A 650-word essay is about 1 page single-spaced or 2 to 3 pages double-spaced, takes about 3 minutes 15 seconds to read at 200 words per minute, and about 5 minutes to speak aloud. Plan it as an introduction of about 80 words, three main points of about 150 words each, and a conclusion of about 120 words — that adds up to 650. If your draft is 700 words, you are inside the 585–715 safe zone, so do not cut good sentences just to hit 650 exactly.</p>
+    <h3>What counts as a unique word</h3>
+    <p>A unique word is a word that appears at least once, counted once no matter how often it appears. Capital letters do not make a new word: &ldquo;The&rdquo; and &ldquo;the&rdquo; are the same word. Contractions count as one word, so &ldquo;don&rsquo;t&rdquo; is one unique word, and hyphenated words such as &ldquo;well-known&rdquo; are one word as well. Numbers count as words, so &ldquo;2026&rdquo; is a unique word the first time it appears. The average word length is the average length of your words in visible characters — for most English writing it is between 4 and 5 characters, and a much higher average usually means long technical words or long names, not better writing.</p>
   </section>
   <section aria-label="Related tools">
     <h2>Related tools</h2>
