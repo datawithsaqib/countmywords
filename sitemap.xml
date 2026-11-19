@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://datawithsaqib.github.io/countmywords/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/word-counter/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/character-counter/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/case-converter/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/sentence-counter/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/reading-time-calculator/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/about/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/contact/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/privacy/</loc></url>
-  <url><loc>https://datawithsaqib.github.io/countmywords/terms/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/word-counter/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/character-counter/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/case-converter/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/sentence-counter/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/reading-time-calculator/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/about/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/contact/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/privacy/</loc></url>
+  <url><loc>https://countmywords.datawithsaqib.workers.dev/terms/</loc></url>
 </urlset>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://datawithsaqib.github.io/countmywords/sitemap.xml
+Sitemap: https://countmywords.datawithsaqib.workers.dev/sitemap.xml
