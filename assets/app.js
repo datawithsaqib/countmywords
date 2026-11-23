@@ -584,7 +584,7 @@
       var html = '<ol>';
       shown.forEach(function (sc, i) {
         var flag = sc.words > 25 ? ' <strong class="long-flag">Long — over 25 words</strong>' : '';
-        html += '<li><strong>#' + (i + 1) + ' (' + sc.words + (sc.words === 1 ? ' word' : ' words') + ')</strong>' + flag + '<br/>' + escapeHtml(sc.text) + '</li>';
+        html += '<li><strong>(' + sc.words + (sc.words === 1 ? ' word' : ' words') + ')</strong>' + flag + '<br/>' + escapeHtml(sc.text) + '</li>';
       });
       html += '</ol>';
       if (withCounts.length > 200) html += '<p class="small">Showing the first 200 of ' + withCounts.length + ' sentences.</p>';
